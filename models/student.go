@@ -3,19 +3,26 @@ package models
 import (
 	"time"
 
-	"github.com/google/uuid"
+	"github.com/gofrs/uuid"
 	"gorm.io/gorm"
 )
 
 type Student struct {
-	ID        uuid.UUID      `json:"id" gorm:"type:uuid;primaryKey"`
+	ID        uuid.UUID      `gorm:"type:char(36);primaryKey" json:"id"`
 	Name      string         `json:"name"`
 	Email     string         `json:"email"`
 	Password  string         `json:"-"`
 	Type      string         `json:"type"`
 	SchoolID  uuid.UUID      `json:"school_id" gorm:"type:uuid"`
-	School    *School        `json:"school" gorm:"foreignKey:SchoolID"`
+	School    *School        `json:"school" gorm:"foreignKey:SchoolID;constraint:OnDelete:CASCADE"`
 	CreatedAt time.Time      `gorm:"autoCreateTime" json:"createdAt"`
 	UpdatedAt time.Time      `gorm:"autoUpdateTime" json:"updatedAt"`
 	DeletedAt gorm.DeletedAt `gorm:"index" json:"deletedAt"`
+}
+
+type StudentInput struct {
+	Name     string `json:"name" faker:"name"`
+	Email    string `json:"email" faker:"email"`
+	Password string `json:"-" faker:"password"`
+	Type     string `json:"type" faker:"-"`
 }
