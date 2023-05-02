@@ -6,6 +6,7 @@ import (
 	"os"
 	rpSchool "u-future-api/api/school/repository"
 	ucSchool "u-future-api/api/school/usecase"
+	ctStudent "u-future-api/api/student/controller"
 	rpStudent "u-future-api/api/student/repository"
 	ucStudent "u-future-api/api/student/usecase"
 	"u-future-api/database/mysql"
@@ -32,24 +33,6 @@ func main() {
 		log.Fatal(err.Error())
 	}
 
-	repoSchool := rpSchool.New(db)
-	useCaseSchool := ucSchool.New(repoSchool)
-
-	repoStudent := rpStudent.New(db)
-	useCaseStudent := ucStudent.New(repoStudent)
-
-	// Generate Faker School
-	err = useCaseSchool.GenerateFaker()
-	if err != nil {
-		log.Fatalln(err.Error())
-	}
-
-	// Generate Faker Student
-	err = useCaseStudent.GenerateFaker(useCaseSchool)
-	if err != nil {
-		log.Fatalln(err.Error())
-	}
-
 	gin.SetMode(gin.DebugMode)
 	router := gin.Default()
 
@@ -60,6 +43,42 @@ func main() {
 	router.GET("health", func(c *gin.Context) {
 		c.String(200, "OK")
 	})
+
+	repoSchool := rpSchool.New(db)
+	useCaseSchool := ucSchool.New(repoSchool)
+
+	repoStudent := rpStudent.New(db)
+	useCaseStudent := ucStudent.New(repoStudent)
+
+	var schoolCount int64
+	if err := db.Model(&models.School{}).Count(&schoolCount).Error; err != nil {
+		log.Fatalln(err.Error())
+	}
+	if schoolCount == 0 {
+		// Generate Faker School
+		err = useCaseSchool.GenerateFaker()
+		if err != nil {
+			log.Fatalln(err.Error())
+		}
+	}
+
+	// check if the student table already has data
+	var studentCount int64
+	if err := db.Model(&models.Student{}).Count(&studentCount).Error; err != nil {
+		log.Fatalln(err.Error())
+	}
+	if studentCount == 0 {
+		// Generate Faker Student
+		err = useCaseStudent.GenerateFaker(useCaseSchool)
+		if err != nil {
+			log.Fatalln(err.Error())
+		}
+	}
+
+	v1 := router.Group("api/v1")
+	ctrlStudent := ctStudent.New(useCaseStudent)
+	studentGrop := v1.Group("student")
+	ctrlStudent.Mount(studentGrop)
 
 	router.Run(fmt.Sprintf(":%s", os.Getenv("APP_PORT")))
 	log.Printf("API run : port :%s\n", fmt.Sprintf(":%s", os.Getenv("PORT")))
