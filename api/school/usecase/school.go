@@ -15,14 +15,23 @@ func New(rs *repository.School) *School {
 	return &School{rs}
 }
 
-func (us *School) Create(arg *models.SchoolInput) error {
+func (us *School) Create(arg *models.SchoolInput, tipe string) error {
 	id, err := uuid.NewV4()
 	if err != nil {
 		return err
 	}
-	school := &models.School{
-		ID:   id,
-		Name: arg.Name,
+	var school *models.School
+	if tipe != "" {
+		school = &models.School{
+			ID:   id,
+			Name: arg.Name,
+			Type: tipe,
+		}
+	} else {
+		school = &models.School{
+			ID:   id,
+			Name: arg.Name,
+		}
 	}
 	return us.rs.Create(school)
 }
@@ -57,7 +66,7 @@ func (us *School) GenerateFaker() error {
 		},
 	}
 	for _, v := range schools {
-		err := us.Create(&v)
+		err := us.Create(&v, "subscribe")
 		if err != nil {
 			return err
 		}

@@ -8,4 +8,5 @@ var (
 	ErrUsernameExist      = errors.New("username already exist!, try another one")
 	ErrTimeout            = errors.New("timeout")
 	ErrMissingBearerToken = errors.New("bearer token is not provided")
+	ErrNullPointer        = errors.New("the pointer value is nil")
 )
