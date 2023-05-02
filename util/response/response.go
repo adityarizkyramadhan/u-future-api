@@ -3,23 +3,35 @@ package response
 import "github.com/gin-gonic/gin"
 
 type Response struct {
+	Meta Meta `json:"meta"`
+	Data any  `json:"data"`
+}
+
+type Meta struct {
 	Status  int    `json:"status"`
 	Message string `json:"message"`
-	Data    any    `json:"data"`
 }
 
 func Success(ctx *gin.Context, status int, data any) {
-	ctx.JSON(status, Response{
+	meta := Meta{
 		Status:  status,
 		Message: "success",
-		Data:    data,
-	})
+	}
+	response := Response{
+		Meta: meta,
+		Data: data,
+	}
+	ctx.JSON(status, response)
 }
 
 func Fail(ctx *gin.Context, status int, errorMessage string) {
-	ctx.JSON(status, Response{
+	meta := Meta{
 		Status:  status,
 		Message: errorMessage,
-		Data:    nil,
-	})
+	}
+	response := Response{
+		Meta: meta,
+		Data: nil,
+	}
+	ctx.JSON(status, response)
 }
