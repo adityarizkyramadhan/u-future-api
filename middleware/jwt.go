@@ -5,14 +5,13 @@ import (
 	"os"
 	"strings"
 	"time"
-	"u-future-api/util/exception"
 	"u-future-api/util/response"
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v4"
 )
 
-func GenerateJWToken(id uint) (string, error) {
+func GenerateJWToken(id string) (string, error) {
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 		"id":  id,
 		"exp": time.Now().Add(3 * 24 * time.Hour).Unix(),
@@ -28,7 +27,7 @@ func ValidateJWToken() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		bearerToken := c.Request.Header.Get("Authorization")
 		if bearerToken == "" {
-			response.Fail(c, http.StatusUnauthorized, exception.ErrMissingBearerToken.Error())
+			response.Fail(c, http.StatusUnauthorized, "bearer token is not provided")
 			return
 		}
 		bearerToken = strings.ReplaceAll(bearerToken, "Bearer ", "")
@@ -38,7 +37,7 @@ func ValidateJWToken() gin.HandlerFunc {
 			return
 		}
 		if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-			userId := uint(claims["id"].(float64))
+			userId := claims["id"].(string)
 			c.Set("id", userId)
 			c.Next()
 		} else {
