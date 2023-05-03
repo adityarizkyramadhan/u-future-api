@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	ctSchool "u-future-api/api/school/controller"
 	rpSchool "u-future-api/api/school/repository"
 	ucSchool "u-future-api/api/school/usecase"
 	ctStudent "u-future-api/api/student/controller"
@@ -79,6 +80,10 @@ func main() {
 	ctrlStudent := ctStudent.New(useCaseStudent)
 	studentGrop := v1.Group("student")
 	ctrlStudent.Mount(studentGrop)
+
+	ctrlSchool := ctSchool.New(useCaseSchool)
+	schoolGroup := v1.Group("school")
+	ctrlSchool.Mount(schoolGroup)
 
 	router.Run(fmt.Sprintf(":%s", os.Getenv("APP_PORT")))
 	log.Printf("API run : port :%s\n", fmt.Sprintf(":%s", os.Getenv("PORT")))

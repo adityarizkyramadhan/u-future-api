@@ -1,0 +1,35 @@
+name: Deploy Api U-Future Backend
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+jobs:
+  web-deploy:
+    if: "contains(github.event.head_commit.message, 'deploy')"
+    name: 🎉 Deploy Api U-Future Backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v2
+
+      - name: 📁 Send files via Rsync
+        uses: Burnett01/rsync-deployments@5.2.1
+        with:
+            switches: -avzr
+            path: .
+            remote_path: /home/ubuntu/u-future-api
+            remote_host: ${{ secrets.SSH_HOST }}
+            remote_user: ${{ secrets.SSH_USERNAME }}
+            remote_key: ${{ secrets.SSH_KEY }}
+
+      - name: 🌟 Run server
+        uses: appleboy/ssh-action@master  
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /home/ubuntu/u-future-api
+            sudo docker-compose down
+            sudo docker-compose up --build -d
