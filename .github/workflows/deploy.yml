@@ -24,7 +24,7 @@ jobs:
             remote_key: ${{ secrets.SSH_KEY }}
 
       - name: 🌟 Run server
-        uses: appleboy/ssh-action@master  
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
@@ -32,4 +32,5 @@ jobs:
           script: |
             cd /home/ubuntu/u-future-api
             sudo docker-compose down
-            sudo docker-compose up --build -d
+            sudo docker-compose up --build --force-recreate -d
+
