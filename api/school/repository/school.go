@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"fmt"
 	"u-future-api/models"
 
 	"gorm.io/gorm"
@@ -26,6 +27,19 @@ func (rs *School) FindById(id string) (*models.School, error) {
 		return nil, err
 	}
 	return &school, nil
+}
+
+func (rs *School) FindPagination(limit, page int, name string) ([]models.School, error) {
+	var schools []models.School
+	offset := limit * (page - 1)
+	db := rs.db.Limit(limit).Offset(offset)
+	if name != "" {
+		db = db.Where("name LIKE ?", fmt.Sprintf("%%%s%%", name))
+	}
+	if err := db.Find(&schools).Error; err != nil {
+		return nil, err
+	}
+	return schools, nil
 }
 
 func (rs *School) FindAll() ([]models.School, error) {

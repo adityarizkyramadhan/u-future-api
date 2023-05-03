@@ -3,6 +3,7 @@ package controller
 import (
 	"net/http"
 	"u-future-api/api/student/usecase"
+	"u-future-api/middleware"
 	"u-future-api/models"
 	"u-future-api/util/response"
 
@@ -49,7 +50,18 @@ func (cs *Student) Register(ctx *gin.Context) {
 	})
 }
 
+func (cs *Student) Profile(ctx *gin.Context) {
+	id := ctx.MustGet("id").(string)
+	student, err := cs.us.FindById(id)
+	if err != nil {
+		response.Fail(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+	response.Success(ctx, http.StatusOK, student)
+}
+
 func (cs *Student) Mount(student *gin.RouterGroup) {
 	student.POST("login", cs.Login)
 	student.POST("register", cs.Register)
+	student.GET("profile", middleware.ValidateJWToken(), cs.Profile)
 }

@@ -8,13 +8,13 @@ type Response struct {
 }
 
 type Meta struct {
-	Status  int    `json:"status"`
+	Success bool   `json:"success"`
 	Message string `json:"message"`
 }
 
 func Success(ctx *gin.Context, status int, data any) {
 	meta := Meta{
-		Status:  status,
+		Success: true,
 		Message: "success",
 	}
 	response := Response{
@@ -26,7 +26,7 @@ func Success(ctx *gin.Context, status int, data any) {
 
 func Fail(ctx *gin.Context, status int, errorMessage string) {
 	meta := Meta{
-		Status:  status,
+		Success: false,
 		Message: errorMessage,
 	}
 	response := Response{

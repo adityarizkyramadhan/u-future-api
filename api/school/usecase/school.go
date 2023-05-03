@@ -1,6 +1,7 @@
 package usecase
 
 import (
+	"strconv"
 	"u-future-api/api/school/repository"
 	"u-future-api/models"
 
@@ -34,6 +35,25 @@ func (us *School) Create(arg *models.SchoolInput, tipe string) error {
 		}
 	}
 	return us.rs.Create(school)
+}
+
+func (us *School) FindPagination(limit, page, name string) ([]models.School, error) {
+	if page == "" {
+		page = "1"
+	}
+	if limit == "" {
+		limit = "10"
+	}
+	pageInt, err := strconv.Atoi(page)
+	if err != nil {
+		return nil, err
+	}
+	limitInt, err := strconv.Atoi(limit)
+	if err != nil {
+		return nil, err
+	}
+
+	return us.rs.FindPagination(limitInt, pageInt, name)
 }
 
 func (us *School) FindAll() ([]models.School, error) {
