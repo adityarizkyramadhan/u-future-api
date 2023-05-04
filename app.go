@@ -29,7 +29,15 @@ func main() {
 	if db == nil {
 		log.Fatal("init connection db failed")
 	}
-	err = mysql.Migrate(new(models.School), new(models.Student))
+	err = mysql.Migrate(
+		&models.School{},
+		&models.Student{},
+		&models.Quiz{},
+		&models.Question{},
+		&models.Option{},
+		&models.UserAnswer{},
+		&models.QuizResult{},
+	)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
