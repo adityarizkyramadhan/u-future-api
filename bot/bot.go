@@ -7,7 +7,13 @@ import (
 	openai "github.com/sashabaranov/go-openai"
 )
 
-func Message(prompt string) (string, error) {
+type Bot struct{}
+
+func New() *Bot {
+	return &Bot{}
+}
+
+func (*Bot) Message(prompt string) (string, error) {
 	client := openai.NewClient(os.Getenv("API_OPENAI"))
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
@@ -28,7 +34,7 @@ func Message(prompt string) (string, error) {
 
 }
 
-func MessageRefferSystem(system, prompt string) (string, error) {
+func (*Bot) MessageRefferSystem(system, prompt string) (string, error) {
 	client := openai.NewClient(os.Getenv("API_OPENAI"))
 	resp, err := client.CreateChatCompletion(
 		context.Background(),
