@@ -44,3 +44,11 @@ func (q *Quiz) GetByName(name string) (*models.Quiz, error) {
 	}
 	return &quiz, nil
 }
+
+func (q *Quiz) SearchByUserID(id string) (*models.QuizResult, error) {
+	var result models.QuizResult
+	if err := q.db.Model(&models.QuizResult{}).Where("user_id = ?", id).First(&result).Error; err != nil {
+		return nil, err
+	}
+	return &result, nil
+}

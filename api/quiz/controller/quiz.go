@@ -3,6 +3,7 @@ package controller
 import (
 	"net/http"
 	"u-future-api/api/quiz/usecase"
+	"u-future-api/middleware"
 	"u-future-api/util/response"
 
 	"github.com/gin-gonic/gin"
@@ -24,4 +25,20 @@ func (qc *Quiz) FindByName(ctx *gin.Context) {
 		return
 	}
 	response.Success(ctx, http.StatusOK, quiz)
+}
+
+func (qc *Quiz) IsUserAttemptQuiz(ctx *gin.Context) {
+	id := ctx.MustGet("id").(string)
+	result, err := qc.qu.SearchTestUser(id)
+	if err != nil {
+		response.Fail(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+	response.Success(ctx, http.StatusOK, gin.H{
+		"already_taken": result,
+	})
+}
+
+func (qc *Quiz) Mount(quiz *gin.RouterGroup) {
+	quiz.GET("/status-quiz", middleware.ValidateJWToken(), qc.IsUserAttemptQuiz)
 }
