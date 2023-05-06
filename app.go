@@ -4,15 +4,15 @@ import (
 	"fmt"
 	"log"
 	"os"
+	ctQuiz "u-future-api/api/quiz/controller"
+	rpQuiz "u-future-api/api/quiz/repository"
+	ucQuiz "u-future-api/api/quiz/usecase"
 	ctSchool "u-future-api/api/school/controller"
 	rpSchool "u-future-api/api/school/repository"
 	ucSchool "u-future-api/api/school/usecase"
 	ctStudent "u-future-api/api/student/controller"
 	rpStudent "u-future-api/api/student/repository"
 	ucStudent "u-future-api/api/student/usecase"
-	ucQuiz "u-future-api/api/quiz/usecase"
-	rpQuiz "u-future-api/api/quiz/repository"
-	ctQuiz "u-future-api/api/quiz/controller"
 	"u-future-api/database/mysql"
 	"u-future-api/middleware"
 	"u-future-api/models"
@@ -87,6 +87,11 @@ func main() {
 		if err != nil {
 			log.Fatalln(err.Error())
 		}
+	}
+
+	err = useCaseQuiz.GenerateQuestion(db)
+	if err != nil {
+		log.Fatalln(err.Error())
 	}
 
 	v1 := router.Group("api/v1")
