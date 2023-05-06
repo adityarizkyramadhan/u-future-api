@@ -18,7 +18,7 @@ func New(qu *usecase.Quiz) *Quiz {
 }
 
 func (qc *Quiz) FindByName(ctx *gin.Context) {
-	name := ctx.Param("name")
+	name := ctx.Query("title")
 	quiz, err := qc.qu.FindByName(name)
 	if err != nil {
 		response.Fail(ctx, http.StatusInternalServerError, err.Error())
@@ -41,4 +41,5 @@ func (qc *Quiz) IsUserAttemptQuiz(ctx *gin.Context) {
 
 func (qc *Quiz) Mount(quiz *gin.RouterGroup) {
 	quiz.GET("/status-quiz", middleware.ValidateJWToken(), qc.IsUserAttemptQuiz)
+	quiz.GET("/question", middleware.ValidateJWToken(), qc.FindByName)
 }

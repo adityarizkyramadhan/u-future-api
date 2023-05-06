@@ -9,4 +9,5 @@ var (
 	ErrTimeout            = errors.New("timeout")
 	ErrMissingBearerToken = errors.New("bearer token is not provided")
 	ErrNullPointer        = errors.New("the pointer value is nil")
+	ErrNoQuery            = errors.New("no query provided")
 )

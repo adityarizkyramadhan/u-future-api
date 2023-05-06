@@ -1,6 +1,7 @@
 package repository
 
 import (
+	"fmt"
 	"u-future-api/models"
 
 	"github.com/gofrs/uuid"
@@ -24,8 +25,9 @@ func (rq *Quiz) Create(arg *models.Quiz) error {
 func (q *Quiz) Get(id uuid.UUID) (*models.Quiz, error) {
 	var quiz models.Quiz
 	err := q.db.
+		Preload("Questions").
 		Preload("Options").
-		Preload("Questions").First(&quiz, id).Error
+		First(&quiz, id).Error
 	if err != nil {
 		return nil, err
 	}
@@ -35,10 +37,10 @@ func (q *Quiz) Get(id uuid.UUID) (*models.Quiz, error) {
 func (q *Quiz) GetByName(name string) (*models.Quiz, error) {
 	var quiz models.Quiz
 	err := q.db.
-		Preload("Options").
 		Preload("Questions").
-		Where("title = ?", name).
-		First(&quiz).Error
+		Preload("Questions.Options").
+		Where("title LIKE ?", fmt.Sprintf("%%%s%%", name)).
+		Take(&quiz).Error
 	if err != nil {
 		return nil, err
 	}
