@@ -17,31 +17,19 @@ type Quiz struct {
 }
 
 type Question struct {
-	ID          uuid.UUID      `gorm:"type:char(36);primaryKey" json:"id"`
-	Text        string         `json:"text"`
-	QuizID      uint           `json:"-"`
-	Options     []Option       `gorm:"foreignKey:QuestionID" json:"options"`
-	UserAnswers []UserAnswer   `gorm:"foreignKey:QuestionID" json:"-"`
-	CreatedAt   time.Time      `gorm:"autoCreateTime" json:"createdAt"`
-	UpdatedAt   time.Time      `gorm:"autoUpdateTime" json:"updatedAt"`
-	DeletedAt   gorm.DeletedAt `gorm:"index" json:"deletedAt"`
+	ID        uuid.UUID      `gorm:"type:char(36);primaryKey" json:"id"`
+	Text      string         `json:"text"`
+	QuizID    uint           `json:"-"`
+	Options   []Option       `gorm:"foreignKey:QuestionID" json:"options"`
+	CreatedAt time.Time      `gorm:"autoCreateTime" json:"createdAt"`
+	UpdatedAt time.Time      `gorm:"autoUpdateTime" json:"updatedAt"`
+	DeletedAt gorm.DeletedAt `gorm:"index" json:"deletedAt"`
 }
 
 type Option struct {
 	ID         uuid.UUID      `gorm:"type:char(36);primaryKey" json:"id"`
 	Text       string         `json:"text"`
 	QuestionID uint           `json:"-"`
-	CreatedAt  time.Time      `gorm:"autoCreateTime" json:"createdAt"`
-	UpdatedAt  time.Time      `gorm:"autoUpdateTime" json:"updatedAt"`
-	DeletedAt  gorm.DeletedAt `gorm:"index" json:"deletedAt"`
-}
-
-type UserAnswer struct {
-	ID         uuid.UUID      `gorm:"type:char(36);primaryKey" json:"id"`
-	UserID     uuid.UUID      `gorm:"type:uuid" json:"user_id"`
-	QuestionID uint           `json:"-"`
-	OptionID   uint           `json:"option_id"`
-	IsCorrect  bool           `json:"is_correct"`
 	CreatedAt  time.Time      `gorm:"autoCreateTime" json:"createdAt"`
 	UpdatedAt  time.Time      `gorm:"autoUpdateTime" json:"updatedAt"`
 	DeletedAt  gorm.DeletedAt `gorm:"index" json:"deletedAt"`
