@@ -3,6 +3,7 @@ package controller
 import (
 	"net/http"
 	"u-future-api/api/school/usecase"
+	"u-future-api/models"
 	"u-future-api/util/response"
 
 	"github.com/gin-gonic/gin"
@@ -37,7 +38,23 @@ func (cs *School) FindById(ctx *gin.Context) {
 	}
 	response.Success(ctx, http.StatusOK, data)
 }
-func (cs *School) Mount(student *gin.RouterGroup) {
-	student.GET("search", cs.FindPagination)
-	student.GET("single/:id", cs.FindById)
+
+func (cs *School) Create(ctx *gin.Context) {
+	var input models.SchoolInput
+	if err := ctx.BindJSON(&input); err != nil {
+		response.Fail(ctx, http.StatusUnprocessableEntity, err.Error())
+		return
+	}
+	if err := cs.us.Create(&input, ""); err != nil {
+		response.Fail(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+	response.Success(ctx, http.StatusCreated, gin.H{
+		"school": input.Name,
+	})
+}
+func (cs *School) Mount(school *gin.RouterGroup) {
+	school.GET("search", cs.FindPagination)
+	school.GET("single/:id", cs.FindById)
+	school.POST("", cs.Create)
 }
