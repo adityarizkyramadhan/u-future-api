@@ -40,9 +40,16 @@ type Option struct {
 
 type QuizResult struct {
 	ID                 uuid.UUID `gorm:"type:char(36);primaryKey" json:"id"`
-	QuizID             uuid.UUID `gorm:"type:uuid" json:"quiz_id"`
 	UserID             uuid.UUID `gorm:"type:uuid" json:"user_id"`
 	ResultSectionOne   string    `json:"result_section_one"`
 	ResultSectionTwo   string    `json:"result_section_two"`
 	ResultSectionThree string    `json:"result_section_three"`
+}
+
+type InputQuizString struct {
+	Data string `json:"data" binding:"required"`
+}
+
+type InputQuizInteger struct {
+	Data int `json:"data" binding:"required"`
 }

@@ -47,10 +47,34 @@ func (q *Quiz) GetByName(name string) (*models.Quiz, error) {
 	return &quiz, nil
 }
 
+func (q *Quiz) GetQuestion(name string) (*models.Quiz, error) {
+	var quiz models.Quiz
+	err := q.db.
+		Preload("Questions").
+		Where("title LIKE ?", fmt.Sprintf("%%%s%%", name)).
+		Take(&quiz).Error
+	if err != nil {
+		return nil, err
+	}
+	return &quiz, nil
+}
+
 func (q *Quiz) SearchByUserID(id string) (*models.QuizResult, error) {
 	var result models.QuizResult
 	if err := q.db.Model(&models.QuizResult{}).Where("user_id = ?", id).First(&result).Error; err != nil {
 		return nil, err
 	}
 	return &result, nil
+}
+
+func (q *Quiz) CreateResult(arg *models.QuizResult) error {
+	return q.db.Transaction(func(tx *gorm.DB) error {
+		return tx.Create(arg).Error
+	})
+}
+
+func (q *Quiz) UpdateResult(arg *models.QuizResult) error {
+	return q.db.Transaction(func(tx *gorm.DB) error {
+		return tx.Where("user_id = ?", arg.UserID).Updates(arg).Error
+	})
 }
