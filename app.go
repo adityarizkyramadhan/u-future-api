@@ -89,6 +89,7 @@ func main() {
 		}
 	}
 
+	// Add Question to database
 	err = useCaseQuiz.GenerateQuestion(db)
 	if err != nil {
 		log.Fatalln(err.Error())
