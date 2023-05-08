@@ -51,5 +51,6 @@ type InputQuizString struct {
 }
 
 type InputQuizInteger struct {
-	Data int `json:"data" binding:"required"`
+	QuestionId string `json:"question_id" binding:"required"`
+	Data       int    `json:"data" binding:"required"`
 }

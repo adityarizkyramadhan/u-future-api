@@ -2,6 +2,7 @@ package usecase
 
 import (
 	"errors"
+	"sort"
 	"u-future-api/api/quiz/repository"
 	"u-future-api/models"
 	"u-future-api/util/exception"
@@ -717,6 +718,10 @@ func (uq *Quiz) SearchTestUser(id string) (bool, error) {
 }
 
 func (uq *Quiz) UpdateResult(query string, data interface{}, userId string) error {
+	idUser, err := uuid.FromString(userId)
+	if err != nil {
+		return err
+	}
 	if query == "SectionOne" {
 		arr := data.([]models.InputQuizString)
 		stringArr := make([]string, 0, len(arr))
@@ -725,17 +730,27 @@ func (uq *Quiz) UpdateResult(query string, data interface{}, userId string) erro
 		}
 		result := logic.MostFrequentElements(stringArr)
 
-		idUser, err := uuid.FromString(userId)
-		if err != nil {
-			return err
-		}
-
 		resultUser := &models.QuizResult{
 			ID:               uuid.Must(uuid.NewV4()),
 			UserID:           idUser,
 			ResultSectionOne: result,
 		}
 		return uq.uc.CreateResult(resultUser)
+	} else if query == "SectionTwo" {
+		arr := data.([]models.InputQuizInteger)
+		sort.Slice(arr, func(i, j int) bool {
+			return arr[i].Data > arr[j].Data
+		})
+		questionId := arr[0].QuestionId
+		result, err := uq.uc.GetQuestionById(questionId)
+		if err != nil {
+			return err
+		}
+		resultUser := &models.QuizResult{
+			UserID:           idUser,
+			ResultSectionTwo: result.Options[0].Text,
+		}
+		return uq.uc.UpdateResult(resultUser, "two")
 	}
 	return exception.ErrNoQuery
 }

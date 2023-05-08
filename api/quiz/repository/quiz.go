@@ -3,6 +3,7 @@ package repository
 import (
 	"fmt"
 	"u-future-api/models"
+	"u-future-api/util/exception"
 
 	"github.com/gofrs/uuid"
 	"gorm.io/gorm"
@@ -73,8 +74,21 @@ func (q *Quiz) CreateResult(arg *models.QuizResult) error {
 	})
 }
 
-func (q *Quiz) UpdateResult(arg *models.QuizResult) error {
+func (q *Quiz) UpdateResult(arg *models.QuizResult, quiz string) error {
 	return q.db.Transaction(func(tx *gorm.DB) error {
-		return tx.Where("user_id = ?", arg.UserID).Updates(arg).Error
+		if quiz == "two" {
+			return tx.Model(&models.QuizResult{}).Where("user_id = ?", arg.UserID).Update("result_section_two", arg.ResultSectionTwo).Error
+		} else if quiz == "three" {
+			return tx.Model(&models.QuizResult{}).Where("user_id = ?", arg.UserID).Update("result_section_three", arg.ResultSectionTwo).Error
+		}
+		return exception.ErrNoQuery
 	})
+}
+
+func (q *Quiz) GetQuestionById(id string) (*models.Question, error) {
+	var question models.Question
+	if err := q.db.Model(&models.Question{}).Preload("Options").Where("id = ?", id).Take(&question).Error; err != nil {
+		return nil, err
+	}
+	return &question, nil
 }
