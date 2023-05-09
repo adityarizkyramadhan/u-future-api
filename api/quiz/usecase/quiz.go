@@ -683,6 +683,645 @@ func (uq *Quiz) GenerateQuestion(db *gorm.DB) error {
 		}
 	}
 
+	sectionThreeOne := &models.Quiz{
+		ID:    uuid.Must(uuid.NewV4()),
+		Title: "teaching, coaching, leadership, counseling",
+		Questions: []models.Question{
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk menyampaikan informasi dengan jelas",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Communication, Public Speaking, Clarity, Presentation",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk memahami kebutuhan dan perasaan orang lain",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Empathy, Emotional Intelligence, Understanding, Listening",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk menyesuaikan metode pengajaran sesuai dengan kebutuhan individu",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Adaptability, Customization, Personalization, Curriculum Development",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk memotivasi dan menginspirasi orang lain",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Motivation, Inspiration, Leadership, Coaching, Mentoring",
+						Description: "",
+					},
+				},
+			},
+		},
+	}
+
+	for i := range sectionThreeOne.Questions {
+		sectionThreeOne.Questions[i].QuizID = sectionThreeOne.ID
+		for j := range sectionThreeOne.Questions[i].Options {
+			sectionThreeOne.Questions[i].Options[j].QuestionID = sectionThreeOne.Questions[i].ID
+		}
+	}
+
+	var secThreeeOneInt int64
+	if err := db.Model(&models.Quiz{}).Where("title = ?", sectionThreeOne.Title).Count(&secThreeeOneInt).Error; err != nil {
+		return err
+	}
+	if secThreeeOneInt == 0 {
+		err := uq.uc.Create(sectionThreeOne)
+		if err != nil {
+			return err
+		}
+	}
+
+	sectionThreeTwo := &models.Quiz{
+		ID:    uuid.Must(uuid.NewV4()),
+		Title: "operating, repairing, maintaining",
+		Questions: []models.Question{
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk mengoperasikan suatu alat",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Equipment Operation, Machinery Handling, Technical Skill, Technical Understanding, Instruction Following, Manual Reading",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk bekerja dengan teliti dan akurat",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Attention to Detail, Precision, Accuracy, Troubleshooting",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk memperbaiki dan merawat peralatan",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Equipment Repair, Maintenance, Servicing, Troubleshooting",
+						Description: "",
+					},
+				},
+			},
+		},
+	}
+	for i := range sectionThreeTwo.Questions {
+		sectionThreeTwo.Questions[i].QuizID = sectionThreeTwo.ID
+		for j := range sectionThreeTwo.Questions[i].Options {
+			sectionThreeTwo.Questions[i].Options[j].QuestionID = sectionThreeTwo.Questions[i].ID
+		}
+	}
+
+	var secThreeTwoInt int64
+	if err := db.Model(&models.Quiz{}).Where("title = ?", sectionThreeTwo.Title).Count(&secThreeTwoInt).Error; err != nil {
+		return err
+	}
+	if secThreeTwoInt == 0 {
+		err := uq.uc.Create(sectionThreeTwo)
+		if err != nil {
+			return err
+		}
+	}
+
+	sectionThreeThree := &models.Quiz{
+		ID:    uuid.Must(uuid.NewV4()),
+		Title: "research, analyzing",
+		Questions: []models.Question{
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk merancang dan melaksanakan suatu penelitian",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Experimental Design, Scientific Method, Research Skill, Planning, Analytical Thinking",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk menganalisis dan menafsirkan data hasil penelitian",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Data Analysis, Statistics, Interpretation, Critical Thinking, Problem Solving",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya meresa memiliki kemampuan untuk bekerja dengan teliti dan akurat",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Attention to Detail, Precision, Accuracy, Logical Thinking",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk memecahkan masalah yang kompleks",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Problem Solving, Critical Thinking, Innovation, Troubleshooting, Analytical Thinking",
+						Description: "",
+					},
+				},
+			},
+		},
+	}
+	for i := range sectionThreeThree.Questions {
+		sectionThreeThree.Questions[i].QuizID = sectionThreeThree.ID
+		for j := range sectionThreeThree.Questions[i].Options {
+			sectionThreeThree.Questions[i].Options[j].QuestionID = sectionThreeThree.Questions[i].ID
+		}
+	}
+
+	var secThreeThreeInt int64
+	if err := db.Model(&models.Quiz{}).Where("title = ?", sectionThreeThree.Title).Count(&secThreeThreeInt).Error; err != nil {
+		return err
+	}
+	if secThreeThreeInt == 0 {
+		err := uq.uc.Create(sectionThreeThree)
+		if err != nil {
+			return err
+		}
+	}
+
+	sectionThreeFour := &models.Quiz{
+		ID:    uuid.Must(uuid.NewV4()),
+		Title: "programming",
+		Questions: []models.Question{
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk memahami logika pemrograman dan bahasa pemrograman",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Programming Languages, Logical Thinking, Algorithm Design",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk menyelesaikan masalah teknis yang rumit dalam pemrograman",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Problem Solving, Troubleshooting, Debugging, Software Development",
+						Description: "",
+					},
+				},
+			},
+		},
+	}
+	for i := range sectionThreeFour.Questions {
+		sectionThreeFour.Questions[i].QuizID = sectionThreeFour.ID
+		for j := range sectionThreeFour.Questions[i].Options {
+			sectionThreeFour.Questions[i].Options[j].QuestionID = sectionThreeFour.Questions[i].ID
+		}
+	}
+
+	var secThreeFourInt int64
+	if err := db.Model(&models.Quiz{}).Where("title = ?", sectionThreeFour.Title).Count(&secThreeFourInt).Error; err != nil {
+		return err
+	}
+	if secThreeFourInt == 0 {
+		err := uq.uc.Create(sectionThreeFour)
+		if err != nil {
+			return err
+		}
+	}
+
+	sectionThreeFive := &models.Quiz{
+		ID:    uuid.Must(uuid.NewV4()),
+		Title: "writing",
+		Questions: []models.Question{
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk menulis dengan gaya dan nada yang tepat untuk audiens yang dituju",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Writing Style, Audience Understanding, Content Creation, Creative Writing",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk merancang konten yang informatif dan menarik",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Content Creation, Blogging, Copywriting, Journalism",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk meneliti topik dan menulis artikel yang informatif",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Research, Article Writing, Interviewing, Fact-Checking",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk mengedit dan menyunting tulisan untuk memastikan kualitasnya",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "Editing, Proofreading, Copyediting, Grammar and Spelling, Style Guide Compliance",
+						Description: "",
+					},
+				},
+			},
+		},
+	}
+	for i := range sectionThreeFive.Questions {
+		sectionThreeFive.Questions[i].QuizID = sectionThreeFive.ID
+		for j := range sectionThreeFive.Questions[i].Options {
+			sectionThreeFive.Questions[i].Options[j].QuestionID = sectionThreeFive.Questions[i].ID
+		}
+	}
+
+	var secThreeFiveInt int64
+	if err := db.Model(&models.Quiz{}).Where("title = ?", sectionThreeFive.Title).Count(&secThreeFiveInt).Error; err != nil {
+		return err
+	}
+	if secThreeFiveInt == 0 {
+		err := uq.uc.Create(sectionThreeFive)
+		if err != nil {
+			return err
+		}
+	}
+
+	sectionThreeSix := &models.Quiz{
+		ID:    uuid.Must(uuid.NewV4()),
+		Title: "designing",
+		Questions: []models.Question{
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk berpikir kreatif dan menghasilkan ide-ide yang unik",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "creative thinking, innovative, artistic, aesthetic, visual thinking",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya terampil dalam mengoperasikan software dan teknologi terkait visual, seperti Adobe Photoshop, Illustrator, atau program editing video",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "visual, creative, communicative, technical, utilizing software",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya mampu memahami brief dari klien dan menghasilkan karya yang sesuai dengan keinginan mereka",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "logic, technical, problem-solving, organizing, coordination, utilizing software",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya memiliki pengalaman dalam mengekspresikan ide-ide atau gagasan melalui media visual seperti lukisan, fotografi, atau desain grafis",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "visual, creative, communicative, fine-art, painting, sculpture, design, graphic design, interior design, music, composition, performing, photography, videography, utilizing software",
+						Description: "",
+					},
+				},
+			},
+		},
+	}
+
+	for i := range sectionThreeSix.Questions {
+		sectionThreeSix.Questions[i].QuizID = sectionThreeSix.ID
+		for j := range sectionThreeSix.Questions[i].Options {
+			sectionThreeSix.Questions[i].Options[j].QuestionID = sectionThreeSix.Questions[i].ID
+		}
+	}
+
+	var secThreeSixInt int64
+	if err := db.Model(&models.Quiz{}).Where("title = ?", sectionThreeSix.Title).Count(&secThreeSixInt).Error; err != nil {
+		return err
+	}
+	if secThreeSixInt == 0 {
+		err := uq.uc.Create(sectionThreeSix)
+		if err != nil {
+			return err
+		}
+	}
+
+	secThreeSeven := &models.Quiz{
+		ID:    uuid.Must(uuid.NewV4()),
+		Title: "administration, management, office, accounting",
+		Questions: []models.Question{
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk merencanakan dan mengorganisir tugas-tugas kantor",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "planning, organizing, scheduling, management",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk mengolah dan menganalisis data dengan akurasi",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "data processing, data analysis, statistics",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk mengelola sumber daya manusia, termasuk merekrut, melatih, dan mengembangkan karyawan",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "human resources, employee development, talent management, training, developing",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk menjaga buku dan catatan keuangan yang akurat",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "bookkeeping, accounting, finance, management",
+						Description: "",
+					},
+				},
+			},
+		},
+	}
+
+	for i := range secThreeSeven.Questions {
+		secThreeSeven.Questions[i].QuizID = secThreeSeven.ID
+		for j := range secThreeSeven.Questions[i].Options {
+			secThreeSeven.Questions[i].Options[j].QuestionID = secThreeSeven.Questions[i].ID
+		}
+	}
+
+	var secThreeSevenInt int64
+	if err := db.Model(&models.Quiz{}).Where("title = ?", secThreeSeven.Title).Count(&secThreeSevenInt).Error; err != nil {
+		return err
+	}
+	if secThreeSevenInt == 0 {
+		err := uq.uc.Create(secThreeSeven)
+		if err != nil {
+			return err
+		}
+	}
+
+	sectionThreeEight := &models.Quiz{
+		ID:    uuid.Must(uuid.NewV4()),
+		Title: "managing, organizing, supervising",
+		Questions: []models.Question{
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk mengorganisir tugas dan proyek dengan efisien",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "project management, time management, team management, delegation",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk menetapkan tujuan dan strategi untuk mencapai hasil yang diinginkan",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "leadership, strategic planning",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk melakukan evaluasi dan perbaikan terhadap proses kerja",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "performance evaluation, process improvement",
+						Description: "",
+					},
+				},
+			},
+		},
+	}
+	for i := range sectionThreeEight.Questions {
+		sectionThreeEight.Questions[i].QuizID = sectionThreeEight.ID
+		for j := range sectionThreeEight.Questions[i].Options {
+			sectionThreeEight.Questions[i].Options[j].QuestionID = sectionThreeEight.Questions[i].ID
+		}
+	}
+
+	var secThreeEightInt int64
+	if err := db.Model(&models.Quiz{}).Where("title = ?", sectionThreeEight.Title).Count(&secThreeEightInt).Error; err != nil {
+		return err
+	}
+	if secThreeEightInt == 0 {
+		err := uq.uc.Create(sectionThreeEight)
+		if err != nil {
+			return err
+		}
+	}
+	sectionThreeNine := &models.Quiz{
+		ID:    uuid.Must(uuid.NewV4()),
+		Title: "caring, helping, assisting",
+		Questions: []models.Question{
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk memahami dan merespons kebutuhan dan masalah orang lain",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "empathy, compassion, counseling, support",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk bekerja dengan orang-orang yang memiliki berbagai macam latar belakang dan kebutuhan",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "social skills, problem-solving, counseling, support, assistance, diversity, inclusion",
+						Description: "",
+					},
+				},
+			},
+		},
+	}
+	for i := range sectionThreeNine.Questions {
+		sectionThreeNine.Questions[i].QuizID = sectionThreeNine.ID
+		for j := range sectionThreeNine.Questions[i].Options {
+			sectionThreeNine.Questions[i].Options[j].QuestionID = sectionThreeNine.Questions[i].ID
+		}
+	}
+
+	var secThreeNineInt int64
+	if err := db.Model(&models.Quiz{}).Where("title = ?", sectionThreeNine.Title).Count(&secThreeNineInt).Error; err != nil {
+		return err
+	}
+	if secThreeNineInt == 0 {
+		err := uq.uc.Create(sectionThreeNine)
+		if err != nil {
+			return err
+		}
+	}
+	sectionThreeTen := &models.Quiz{
+		ID:    uuid.Must(uuid.NewV4()),
+		Title: "creating, innovating, ideating",
+		Questions: []models.Question{
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk berpikir kreatif dan menghasilkan ide-ide baru",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "creativity, innovation, ideation",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk mengembangkan solusi baru dan inovatif untuk masalah yang kompleks",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "brainstorming, problem-solving, design thinking, product development",
+						Description: "",
+					},
+				},
+			},
+		},
+	}
+	for i := range sectionThreeTen.Questions {
+		sectionThreeTen.Questions[i].QuizID = sectionThreeTen.ID
+		for j := range sectionThreeTen.Questions[i].Options {
+			sectionThreeTen.Questions[i].Options[j].QuestionID = sectionThreeTen.Questions[i].ID
+		}
+	}
+
+	var secThreeTenInt int64
+	if err := db.Model(&models.Quiz{}).Where("title = ?", sectionThreeTen.Title).Count(&secThreeTenInt).Error; err != nil {
+		return err
+	}
+	if secThreeTenInt == 0 {
+		err := uq.uc.Create(sectionThreeTen)
+		if err != nil {
+			return err
+		}
+	}
+
+	sectionThreeEleven := &models.Quiz{
+		ID:    uuid.Must(uuid.NewV4()),
+		Title: "performing, entertaining, directing",
+		Questions: []models.Question{
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk tampil dan menghibur orang lain",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "performing arts, entertainment industry, creative expression",
+						Description: "",
+					},
+				},
+			},
+			{
+				ID:   uuid.Must(uuid.NewV4()),
+				Text: "Saya merasa memiliki kemampuan untuk menciptakan dan mengembangkan karya seni dan hiburan yang bermakna dan berpengaruh",
+				Options: []models.Option{
+					{
+						ID:          uuid.Must(uuid.NewV4()),
+						Text:        "producing, direction, leadership",
+						Description: "",
+					},
+				},
+			},
+		},
+	}
+	for i := range sectionThreeEleven.Questions {
+		sectionThreeEleven.Questions[i].QuizID = sectionThreeEleven.ID
+		for j := range sectionThreeEleven.Questions[i].Options {
+			sectionThreeEleven.Questions[i].Options[j].QuestionID = sectionThreeEleven.Questions[i].ID
+		}
+	}
+
+	var secThreeElevenInt int64
+	if err := db.Model(&models.Quiz{}).Where("title = ?", sectionThreeEleven.Title).Count(&secThreeElevenInt).Error; err != nil {
+		return err
+	}
+	if secThreeElevenInt == 0 {
+		err := uq.uc.Create(sectionThreeEleven)
+		if err != nil {
+			return err
+		}
+	}
+
 	return nil
 
 }
