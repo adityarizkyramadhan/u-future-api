@@ -36,6 +36,14 @@ func (qc *Quiz) FindByName(ctx *gin.Context) {
 			return
 		}
 		response.Success(ctx, http.StatusOK, quiz)
+	} else if name == "SectionThree" {
+		id := ctx.MustGet("id").(string)
+		quiz, err := qc.qu.SectionThreeQuiz(id)
+		if err != nil {
+			response.Fail(ctx, http.StatusInternalServerError, err.Error())
+			return
+		}
+		response.Success(ctx, http.StatusOK, quiz)
 	} else {
 		response.Fail(ctx, http.StatusBadRequest, exception.ErrNoQuery.Error())
 	}
@@ -70,6 +78,19 @@ func (qc *Quiz) AttemptQuiz(ctx *gin.Context) {
 			"quiz_attempt": name,
 		})
 	} else if name == "SectionTwo" {
+		var data []models.InputQuizInteger
+		if err := ctx.Bind(&data); err != nil {
+			response.Fail(ctx, http.StatusUnprocessableEntity, err.Error())
+			return
+		}
+		if err := qc.qu.UpdateResult(name, data, id); err != nil {
+			response.Fail(ctx, http.StatusInternalServerError, err.Error())
+			return
+		}
+		response.Success(ctx, http.StatusOK, gin.H{
+			"quiz_attempt": name,
+		})
+	} else if name == "SectionThree" {
 		var data []models.InputQuizInteger
 		if err := ctx.Bind(&data); err != nil {
 			response.Fail(ctx, http.StatusUnprocessableEntity, err.Error())

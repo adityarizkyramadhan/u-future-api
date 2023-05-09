@@ -1345,6 +1345,26 @@ func (uq *Quiz) SectionTwoQuiz(id string) (*models.Quiz, error) {
 	return quiz, nil
 }
 
+func (uq *Quiz) SectionThreeQuiz(id string) (*models.Quiz, error) {
+	result, err := uq.uc.SearchByUserID(id)
+	if err != nil {
+		return nil, err
+	}
+	resultSectionTwo := logic.TrimAndChangeStringToArray(result.ResultSectionTwo)
+	for i := range resultSectionTwo {
+		quiz, err := uq.uc.GetTheme(resultSectionTwo[i])
+		if err != nil {
+			err = nil
+			continue
+		}
+		if quiz != nil {
+			return quiz, nil
+		}
+	}
+	return nil, exception.ErrNoQuery
+
+}
+
 func (uq *Quiz) SearchTestUser(id string) (bool, error) {
 	result, err := uq.uc.SearchByUserID(id)
 	if errors.Is(err, gorm.ErrRecordNotFound) {
@@ -1390,6 +1410,21 @@ func (uq *Quiz) UpdateResult(query string, data interface{}, userId string) erro
 			ResultSectionTwo: result.Options[0].Text,
 		}
 		return uq.uc.UpdateResult(resultUser, "two")
+	} else if query == "SectionThree" {
+		arr := data.([]models.InputQuizInteger)
+		sort.Slice(arr, func(i, j int) bool {
+			return arr[i].Data > arr[j].Data
+		})
+		questionId := arr[0].QuestionId
+		result, err := uq.uc.GetQuestionById(questionId)
+		if err != nil {
+			return err
+		}
+		resultUser := &models.QuizResult{
+			UserID:             idUser,
+			ResultSectionThree: result.Options[0].Text,
+		}
+		return uq.uc.UpdateResult(resultUser, "three")
 	}
 	return exception.ErrNoQuery
 }

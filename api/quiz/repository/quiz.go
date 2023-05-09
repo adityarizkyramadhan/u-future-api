@@ -52,6 +52,18 @@ func (q *Quiz) GetQuestion(name string) (*models.Quiz, error) {
 	var quiz models.Quiz
 	err := q.db.
 		Preload("Questions").
+		Where("title LIKE ?", name).
+		Take(&quiz).Error
+	if err != nil {
+		return nil, err
+	}
+	return &quiz, nil
+}
+
+func (q *Quiz) GetTheme(name string) (*models.Quiz, error) {
+	var quiz models.Quiz
+	err := q.db.
+		Preload("Questions").
 		Where("title LIKE ?", fmt.Sprintf("%%%s%%", name)).
 		Take(&quiz).Error
 	if err != nil {
@@ -79,7 +91,7 @@ func (q *Quiz) UpdateResult(arg *models.QuizResult, quiz string) error {
 		if quiz == "two" {
 			return tx.Model(&models.QuizResult{}).Where("user_id = ?", arg.UserID).Update("result_section_two", arg.ResultSectionTwo).Error
 		} else if quiz == "three" {
-			return tx.Model(&models.QuizResult{}).Where("user_id = ?", arg.UserID).Update("result_section_three", arg.ResultSectionTwo).Error
+			return tx.Model(&models.QuizResult{}).Where("user_id = ?", arg.UserID).Update("result_section_three", arg.ResultSectionThree).Error
 		}
 		return exception.ErrNoQuery
 	})
