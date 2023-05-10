@@ -39,6 +39,7 @@ func main() {
 		&models.Question{},
 		&models.Option{},
 		&models.QuizResult{},
+		&models.Jurusan{},
 	)
 	if err != nil {
 		log.Fatal(err.Error())
@@ -91,6 +92,11 @@ func main() {
 
 	// Add Question to database
 	err = useCaseQuiz.GenerateQuestion(db)
+	if err != nil {
+		log.Fatalln(err.Error())
+	}
+
+	err = useCaseQuiz.GenerateJurusan(db)
 	if err != nil {
 		log.Fatalln(err.Error())
 	}

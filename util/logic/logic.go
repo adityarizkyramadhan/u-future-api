@@ -26,3 +26,20 @@ func TrimAndChangeStringToArray(s string) []string {
 	}
 	return subs
 }
+
+func CompareArray(arr1, arr2 []string) int {
+	count := 0
+	for _, val1 := range arr1 {
+		// loop array kedua
+		for _, val2 := range arr2 {
+			// jika ditemukan kesamaan data
+			if val1 == val2 {
+				// tambahkan nilai count
+				count++
+				// keluar dari loop array kedua
+				break
+			}
+		}
+	}
+	return count
+}
