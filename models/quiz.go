@@ -46,6 +46,12 @@ type QuizResult struct {
 	ResultSectionThree string    `json:"result_section_three"`
 }
 
+type QuizResultRiwayat struct {
+	ID               uuid.UUID `gorm:"type:char(36);primaryKey" json:"id"`
+	UserID           uuid.UUID `gorm:"type:uuid" json:"user_id"`
+	ResultSectionOne string    `json:"result_section_one"`
+}
+
 type InputQuizString struct {
 	Data string `json:"data" binding:"required"`
 }
@@ -55,19 +61,14 @@ type InputQuizInteger struct {
 	Data       int    `json:"data" binding:"required"`
 }
 
-type Jurusan struct {
-	ID                    uuid.UUID      `gorm:"type:char(36);primaryKey" json:"id"`
-	NamaJurusan           string         `json:"nama_jurusan"`
-	RIASECCode            string         `json:"RIASEC_code"`
-	WorkActivities        string         `json:"work_activities"`
-	Values                string         `json:"values"`
-	TingkatKeketatan      float64        `json:"tingkat_keketatan"`
-	TingkatKeselarasan    float64        `json:"tingkat_keselarasan"`
-	TingkatDapatPekerjaan float64        `json:"tingkat_dapat_pekerjaan"`
-	TingkatProspekKerja   float64        `json:"tingkat_prospek_kerja"`
-	Gaji                  string         `json:"gaji"`
-	Pekerjaan             string         `json:"pekerjaan"`
-	CreatedAt             time.Time      `gorm:"autoCreateTime" json:"createdAt"`
-	UpdatedAt             time.Time      `gorm:"autoUpdateTime" json:"updatedAt"`
-	DeletedAt             gorm.DeletedAt `gorm:"index" json:"deletedAt"`
+type QuizResultAnalisis struct {
+	Title         string  `json:"title"`
+	Tag           string  `json:"tag"`
+	Description   string  `json:"description"`
+	Realistic     float64 `json:"realistic"`
+	Investigative float64 `json:"investigative"`
+	Artistic      float64 `json:"artistic"`
+	Social        float64 `json:"social"`
+	Enterprising  float64 `json:"enterprising"`
+	Conventional  float64 `json:"conventional"`
 }

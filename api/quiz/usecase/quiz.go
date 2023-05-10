@@ -3,6 +3,7 @@ package usecase
 import (
 	"errors"
 	"sort"
+	"strings"
 	"u-future-api/api/quiz/repository"
 	"u-future-api/models"
 	"u-future-api/util/exception"
@@ -82,6 +83,15 @@ func (uq *Quiz) UpdateResult(query string, data interface{}, userId string) erro
 			stringArr = append(stringArr, item.Data)
 		}
 		result := logic.MostFrequentElements(stringArr)
+		str := strings.Join(stringArr, ",")
+		history := &models.QuizResultRiwayat{
+			ID:               uuid.Must(uuid.NewV4()),
+			UserID:           idUser,
+			ResultSectionOne: str,
+		}
+		if err := uq.uc.Create(history); err != nil {
+			return err
+		}
 
 		resultUser := &models.QuizResult{
 			ID:               uuid.Must(uuid.NewV4()),
@@ -121,4 +131,55 @@ func (uq *Quiz) UpdateResult(query string, data interface{}, userId string) erro
 		return uq.uc.UpdateResult(resultUser, "three")
 	}
 	return exception.ErrNoQuery
+}
+
+func (uq *Quiz) GetResult(id string) (*models.QuizResultAnalisis, error) {
+	var analisis models.QuizResultAnalisis
+
+	history, err := uq.uc.GetHistoryByUserId(id)
+
+	if err != nil {
+		return nil, err
+	}
+	userRaisecArr := logic.TrimAndChangeStringToArray(history.ResultSectionOne)
+
+	analisis.Title = "Master Mind"
+	analisis.Tag = logic.GetMostFrequentItems(userRaisecArr)
+	analisis.Description = "Deskripsinya"
+	analisis.Realistic = logic.CalculateResult("R", userRaisecArr)
+	analisis.Investigative = logic.CalculateResult("I", userRaisecArr)
+	analisis.Artistic = logic.CalculateResult("A", userRaisecArr)
+	analisis.Social = logic.CalculateResult("S", userRaisecArr)
+	analisis.Enterprising = logic.CalculateResult("E", userRaisecArr)
+	analisis.Conventional = logic.CalculateResult("C", userRaisecArr)
+
+	persentase := make(map[string]float64)
+	persentase["R"] = analisis.Realistic
+	persentase["I"] = analisis.Investigative
+	persentase["A"] = analisis.Artistic
+	persentase["S"] = analisis.Social
+	persentase["E"] = analisis.Enterprising
+	persentase["C"] = analisis.Conventional
+	var top3 []string
+	for i := 0; i < 3; i++ {
+		maxPersentase := 0.0
+		maxKepribadian := ""
+		for k, v := range persentase {
+			if v > maxPersentase {
+				maxPersentase = v
+				maxKepribadian = k
+			}
+		}
+		top3 = append(top3, maxKepribadian)
+		delete(persentase, maxKepribadian)
+	}
+
+	// Ubah array hasilnya menjadi string
+	resultString := ""
+	for _, k := range top3 {
+		resultString += k
+	}
+
+	analisis.Tag = resultString
+	return &analisis, err
 }

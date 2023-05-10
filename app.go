@@ -39,6 +39,7 @@ func main() {
 		&models.Question{},
 		&models.Option{},
 		&models.QuizResult{},
+		&models.QuizResultRiwayat{},
 		&models.Jurusan{},
 	)
 	if err != nil {

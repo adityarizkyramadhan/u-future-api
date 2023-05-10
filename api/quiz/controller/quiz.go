@@ -106,8 +106,19 @@ func (qc *Quiz) AttemptQuiz(ctx *gin.Context) {
 	}
 }
 
+func (qc *Quiz) GetAnalisis(ctx *gin.Context) {
+	id := ctx.MustGet("id").(string)
+	analisis, err := qc.qu.GetResult(id)
+	if err != nil {
+		response.Fail(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+	response.Success(ctx, http.StatusOK, analisis)
+}
+
 func (qc *Quiz) Mount(quiz *gin.RouterGroup) {
 	quiz.GET("status-quiz", middleware.ValidateJWToken(), qc.IsUserAttemptQuiz)
 	quiz.GET("question", middleware.ValidateJWToken(), qc.FindByName)
 	quiz.POST("attempt-quiz", middleware.ValidateJWToken(), qc.AttemptQuiz)
+	quiz.GET("analisis", middleware.ValidateJWToken(), qc.GetAnalisis)
 }
