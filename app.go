@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"u-future-api/api/chat"
 	ctJur "u-future-api/api/jurusan/controller"
 	rpJur "u-future-api/api/jurusan/repository"
 	ucJur "u-future-api/api/jurusan/usecase"
@@ -16,6 +17,7 @@ import (
 	ctStudent "u-future-api/api/student/controller"
 	rpStudent "u-future-api/api/student/repository"
 	ucStudent "u-future-api/api/student/usecase"
+	"u-future-api/bot"
 	"u-future-api/database/mysql"
 	"u-future-api/middleware"
 	"u-future-api/models"
@@ -131,6 +133,11 @@ func main() {
 	ctrlJurusan := ctJur.New(useCaseJurusan)
 	jurusanGroup := v1.Group("jurusan")
 	ctrlJurusan.Mount(jurusanGroup)
+
+	botChat := bot.New()
+	chatBot := chat.New(botChat)
+	botGroup := v1.Group("bot")
+	chatBot.Mount(botGroup)
 
 	router.Run(fmt.Sprintf(":%s", os.Getenv("APP_PORT")))
 	log.Printf("API run : port :%s\n", fmt.Sprintf(":%s", os.Getenv("PORT")))
