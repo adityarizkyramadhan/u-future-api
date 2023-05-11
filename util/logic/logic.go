@@ -47,10 +47,11 @@ func CompareArray(arr1, arr2 []string) int {
 	return count
 }
 
-func CompareJurusanAndHistory(jurusanRAISEC, studentRAISEC string) int {
+func CompareJurusanAndHistory(jurusanRAISEC, studentRAISEC string) float64 {
 	arrJurusan := TrimAndChangeStringToArray(jurusanRAISEC)
 	arrStudent := TrimAndChangeStringToArray(studentRAISEC)
-	return CompareArray(arrJurusan, arrStudent)
+	data := float64(CompareArray(arrJurusan, arrStudent)) / float64(len(arrJurusan))
+	return data
 }
 
 func CalculateResult(data string, jawaban []string) float64 {

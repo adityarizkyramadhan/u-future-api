@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"log"
 	"os"
+	ctJur "u-future-api/api/jurusan/controller"
+	rpJur "u-future-api/api/jurusan/repository"
+	ucJur "u-future-api/api/jurusan/usecase"
 	ctQuiz "u-future-api/api/quiz/controller"
 	rpQuiz "u-future-api/api/quiz/repository"
 	ucQuiz "u-future-api/api/quiz/usecase"
@@ -42,6 +45,7 @@ func main() {
 		&models.QuizResultRiwayat{},
 		&models.Jurusan{},
 		&models.AnalisisRiasec{},
+		&models.JurusanStudentCompare{},
 	)
 	if err != nil {
 		log.Fatal(err.Error())
@@ -66,6 +70,9 @@ func main() {
 
 	repoQuiz := rpQuiz.New(db)
 	useCaseQuiz := ucQuiz.New(repoQuiz)
+
+	repoJurusan := rpJur.New(db)
+	useCaseJurusan := ucJur.New(repoJurusan, repoQuiz)
 
 	var schoolCount int64
 	if err := db.Model(&models.School{}).Count(&schoolCount).Error; err != nil {
@@ -120,6 +127,10 @@ func main() {
 	ctrlQuiz := ctQuiz.New(useCaseQuiz)
 	quizGroup := v1.Group("quiz")
 	ctrlQuiz.Mount(quizGroup)
+
+	ctrlJurusan := ctJur.New(useCaseJurusan)
+	jurusanGroup := v1.Group("jurusan")
+	ctrlJurusan.Mount(jurusanGroup)
 
 	router.Run(fmt.Sprintf(":%s", os.Getenv("APP_PORT")))
 	log.Printf("API run : port :%s\n", fmt.Sprintf(":%s", os.Getenv("PORT")))

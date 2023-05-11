@@ -30,4 +30,10 @@ type Jurusan struct {
 }
 
 type JurusanStudentCompare struct {
+	ID          uuid.UUID `gorm:"type:char(36);primaryKey" json:"id"`
+	UserID      uuid.UUID `gorm:"type:uuid" json:"user_id"`
+	Percentage  float64   `json:"percentage"`
+	NamaJurusan string    `json:"nama_jurusan"`
+	TagJurusan  string    `json:"tag_jurusan"`
+	Jurusan     string    `json:"jurusan"`
 }
