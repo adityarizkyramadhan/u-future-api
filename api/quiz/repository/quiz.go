@@ -143,3 +143,11 @@ func (q *Quiz) GetResultByUserID(userId string) (*models.QuizResult, error) {
 	}
 	return &result, nil
 }
+
+func (q *Quiz) GetAnalisisRiasec(tag string) (*models.AnalisisRiasec, error) {
+	var result models.AnalisisRiasec
+	if err := q.db.Where("tag LIKE ?", tag).Take(&result).Error; err != nil {
+		return nil, err
+	}
+	return &result, nil
+}

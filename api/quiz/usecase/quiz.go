@@ -143,9 +143,7 @@ func (uq *Quiz) GetResult(id string) (*models.QuizResultAnalisis, error) {
 	}
 	userRaisecArr := logic.TrimAndChangeStringToArray(history.ResultSectionOne)
 
-	analisis.Title = "Master Mind"
 	analisis.Tag = logic.GetMostFrequentItems(userRaisecArr)
-	analisis.Description = "Deskripsinya"
 	analisis.Realistic = logic.CalculateResult("R", userRaisecArr)
 	analisis.Investigative = logic.CalculateResult("I", userRaisecArr)
 	analisis.Artistic = logic.CalculateResult("A", userRaisecArr)
@@ -178,6 +176,25 @@ func (uq *Quiz) GetResult(id string) (*models.QuizResultAnalisis, error) {
 	resultString := ""
 	for _, k := range top3 {
 		resultString += k
+	}
+
+	riasecProb := logic.Permutations(resultString)
+
+	for i := range riasecProb {
+		reiasecData, err := uq.uc.GetAnalisisRiasec(riasecProb[i])
+
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			err = nil
+			continue
+		}
+		if reiasecData != nil {
+			analisis.Description = reiasecData.Description
+			analisis.Title = reiasecData.Title
+			break
+		}
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	analisis.Tag = resultString

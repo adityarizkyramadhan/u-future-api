@@ -111,3 +111,26 @@ func GetMostFrequentItems(dataArray []string) string {
 	str := strings.Join(result, ",")
 	return str
 }
+
+func Permutations(word string) []string {
+	// base case
+	if len(word) == 1 {
+		return []string{word}
+	}
+
+	var perms []string
+	// loop through each character in the word
+	for i, c := range word {
+		// get all permutations of the remaining characters
+		remaining := word[:i] + word[i+1:]
+		subperms := Permutations(remaining)
+
+		// append the current character to each sub-permutation
+		for _, subperm := range subperms {
+			perm := string(c) + subperm
+			perms = append(perms, perm)
+		}
+	}
+
+	return perms
+}

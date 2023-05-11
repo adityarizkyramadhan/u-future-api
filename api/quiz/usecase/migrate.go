@@ -1326,6 +1326,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.85,
 			Gaji:                  "75 - 100 Juta",
 			Pekerjaan:             "Auditor, Tax Consultant, Financial Controller, Investment Banker, Management Accountant",
+			Deskripsi:             "Studi tentang pemrosesan dan pelaporan informasi keuangan untuk pengambilan keputusan bisnis",
+			TagJurusan:            "Keuangan, audit, pajak",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Akuntansi Keuangan, Akuntansi Manajemen, Pajak, Audit",
+			IDKampus:              "1,3,4,5,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1339,6 +1344,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.55,
 			Gaji:                  "75 - 90 Juta",
 			Pekerjaan:             "Cultural Resource Manager, Human Resource Manager, Social Worker, Public Policy Analyst, Market Research Analyst",
+			Deskripsi:             "Studi tentang perilaku manusia dan budaya dalam masyarakat dan lingkungan mereka.",
+			TagJurusan:            "Sosial, masyarakat, manusia",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Teori Antropologi, Metodologi Penelitian Sosial, Budaya dan Masyarakat, Identitas dan Kebudayaan",
+			IDKampus:              "1,2,3,5,6,7,8,11",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1352,6 +1362,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.55,
 			Gaji:                  "80 - 100 Juta",
 			Pekerjaan:             "Cultural Resource Manager, Museum Curator, Heritage Manager, Archaeologist, Art Historian",
+			Deskripsi:             "Studi tentang sejarah dan kebudayaan manusia melalui penggalian, penelitian, dan restorasi situs arkeologi",
+			TagJurusan:            "Sejarah, budaya, manusia",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Arkeologi Pra-sejarah, Arkeologi Sejarah, Metodologi Penelitian Arkeologi, Restorasi Benda Cagar",
+			IDKampus:              "2,3,5,6,7,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1365,6 +1380,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.78,
 			Gaji:                  "150 - 250 Juta",
 			Pekerjaan:             "Architect, Urban Designer, Interior Designer, Landscape Architect, Construction Manager",
+			Deskripsi:             "Studi tentang desain dan konstruksi bangunan dan lingkungan yang efektif, efisien, dan estetis",
+			TagJurusan:            "Desain, konstruksi, bangunan",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Desain Arsitektur, Struktur Bangunan, Teknik Gambar Bangunan, Estimasi dan Manajemen Proyek",
+			IDKampus:              "1,3,4,6,7,8,9,12",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1378,6 +1398,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.65,
 			Gaji:                  "80 - 120 Juta",
 			Pekerjaan:             "Biotechnologist, Bioinformatician, Biomedical Scientist, Ecologist, Conservationist",
+			Deskripsi:             "Studi tentang makhluk hidup dan proses kehidupan mereka",
+			TagJurusan:            "Makhluk hidup, proses kehidupan",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Genetika, Anatomi dan Fisiologi Manusia, Mikrobiologi, Ekologi",
+			IDKampus:              "1,2,4,5,7,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1391,6 +1416,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.89,
 			Gaji:                  "150 - 200 Juta",
 			Pekerjaan:             "Apoteker, Clinical Researcher, Farmasi Industri",
+			Deskripsi:             "Studi tentang pengembangan dan penggunaan obat dan pengobatan untuk mengobati penyakit",
+			TagJurusan:            "Farmasi, obat, pengobatan",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Kimia Farmasi, Farmakologi, Biologi Molekuler, Sistem Pengobatan",
+			IDKampus:              "2,4,5,7,8,9",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1404,6 +1434,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.74,
 			Gaji:                  "100 - 150 Juta",
 			Pekerjaan:             "Fisikawan, Ahli Geofisika, Ahli Kimia",
+			Deskripsi:             "Studi tentang sifat dasar materi dan energi, serta interaksi di antara keduanya",
+			TagJurusan:            "Fisika, sifat materi, energi, interaksi",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Mekanika Klasik, Elektromagnetisme, Termodinamika, Fisika Modern",
+			IDKampus:              "1,3,5,6,8,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1417,6 +1452,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.64,
 			Gaji:                  "75 - 100 Juta",
 			Pekerjaan:             "Fisioterapis, Ahli Rehabilitasi, Ahli Kesehatan Olahraga",
+			Deskripsi:             "Studi tentang pencegahan, pemulihan, dan pemeliharaan gerak dan fungsi tubuh dengan terapi fisik",
+			TagJurusan:            "Fisioterapi, gerak tubuh, terapi fisik",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Anatomi dan Fisiologi, Biomekanik, Fisioterapi pada Kondisi Medis, Metode Penelitian Fisioterapi",
+			IDKampus:              "5,6,7,8,9,11",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1430,6 +1470,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.7,
 			Gaji:                  "100 - 150 Juta",
 			Pekerjaan:             "Ahli Geofisika, Ahli Geologi, Peneliti Bumi",
+			Deskripsi:             "Studi tentang sifat fisik bumi dan gejala alaminya",
+			TagJurusan:            "Sifat bumi, gejala alam, geologi",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Geologi Terapan, Fisika Bumi, Geofisika Medan, Penginderaan Jauh",
+			IDKampus:              "1,3,4,6,8,9,10,11",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1443,6 +1488,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.59,
 			Gaji:                  "75 - 100 Juta",
 			Pekerjaan:             "Kartografer, Pengamat Lingkungan, Ahli Pemetaan",
+			Deskripsi:             "Studi tentang karakteristik fisik, manusia, dan lingkungan bumi serta interaksi di antara keduanya",
+			TagJurusan:            "Karakteristik bumi, manusia",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Geografi Ekonomi, Geografi Politik, Geografi Lingkungan, Sistem Informasi Geografis",
+			IDKampus:              "1,2,4,5,6,7,8,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1456,6 +1506,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.83,
 			Gaji:                  "125 - 175 Juta",
 			Pekerjaan:             "Geologist, Mining Engineer, Environmental Scientist",
+			Deskripsi:             "Studi tentang sifat, struktur, dan sejarah bumi",
+			TagJurusan:            "Sifat bumi, struktur, sejarah bumi",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Mineralogi dan Petrologi, Geologi Struktur, Geologi Sedimen, Geologi Lingkungan",
+			IDKampus:              "1,2,4,5,6,8,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1469,6 +1524,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.83,
 			Gaji:                  "50 - 75 Juta",
 			Pekerjaan:             "Nutritionist, Dietitian, Food Scientist",
+			Deskripsi:             "Studi tentang nutrisi dan bagaimana makanan memengaruhi kesehatan",
+			TagJurusan:            "Gizi, nutrisi, makanan, kesehatan",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Gizi Manusia, Metabolisme Nutrisi, Pangan dan Gizi, Gizi pada Kondisi Khusus",
+			IDKampus:              "2,4,5,7,8,9",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1482,6 +1542,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.83,
 			Gaji:                  "100 - 125 Juta",
 			Pekerjaan:             "Diplomat, International Trade Specialist, Policy Analyst",
+			Deskripsi:             "Studi tentang interaksi antara negara-negara dalam konteks politik, ekonomi, dan sosial",
+			TagJurusan:            "Negara, politik, sosial",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Teori Hubungan Internasional, Diplomasi dan Negosiasi, Kebijakan Luar Negeri, Konflik Global",
+			IDKampus:              "1,3,5,6,8,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1495,6 +1560,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.73,
 			Gaji:                  "75 - 100 Juta",
 			Pekerjaan:             "Public Relations Specialist, Communications Specialist, Event Planner",
+			Deskripsi:             "Studi tentang cara-cara masyarakat berinteraksi dan memengaruhi satu sama lain",
+			TagJurusan:            "Interaksi, sosial masyarakat",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Teori Komunikasi, Periklanan, Komunikasi Pemasaran, Penelitian Opini Publik",
+			IDKampus:              "5,6,7,8,9,11",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1508,6 +1578,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.83,
 			Gaji:                  "200 - 250 Juta",
 			Pekerjaan:             "Actuary, Risk Manager, Data Analyst",
+			Deskripsi:             "Studi tentang risiko keuangan dan metode untuk mengukurnya",
+			TagJurusan:            "Risiko keuangan, metode pengukuran",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Matematika Keuangan, Statistika Aktuaria, Ekonomi Keuangan, Asuransi",
+			IDKampus:              "2,3,4,5,6,7,10,11",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1521,6 +1596,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.78,
 			Gaji:                  "100 - 125 Juta",
 			Pekerjaan:             "Economist, Market Research Analyst, Investment Analyst",
+			Deskripsi:             "Jurusan yang mempelajari produksi, distribusi, dan konsumsi.",
+			TagJurusan:            "Ekonomi, bisnis, akuntansi",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Mikroekonomi, Makroekonomi, Ekonomi Internasional, Ekonomi Pembangunan",
+			IDKampus:              "1,2,3,5,6,8,9,11",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1534,6 +1614,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.73,
 			Gaji:                  "50 - 75 Juta",
 			Pekerjaan:             "Philosopher, Researcher, Writer",
+			Deskripsi:             "Jurusan yang membahas pemikiran, nilai, dan realitas.",
+			TagJurusan:            "Filsafat, etika, logika",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Filsafat Barat, Filsafat Timur, Epistemologi, Etika",
+			IDKampus:              "1,2,4,6,7,8,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1547,6 +1632,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.83,
 			Gaji:                  "100 - 125 Juta",
 			Pekerjaan:             "Lawyer, Judge, Legal Consultant",
+			Deskripsi:             "Jurusan yang mempelajari sistem hukum dan peraturan.",
+			TagJurusan:            "Hukum, undang-undang, legislasi",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Hukum Pidana, Hukum Perdata, Hukum Bisnis, Hukum Internasional",
+			IDKampus:              "2,4,5,7,8,9,12",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1560,6 +1650,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.88,
 			Gaji:                  "50 - 75 Juta",
 			Pekerjaan:             "Nurse, Healthcare Administrator, Clinical Research Coordinator",
+			Deskripsi:             "Jurusan yang mempelajari perawatan kesehatan pada pasien.",
+			TagJurusan:            "Kesehatan, medis, perawatan",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Anatomi dan Fisiologi Manusia, Keperawatan Medikal Bedah, Keperawatan Jiwa, Keperawatan Komunitas",
+			IDKampus:              "1,3,5,6,8,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1573,6 +1668,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.88,
 			Gaji:                  "175 - 225 Juta",
 			Pekerjaan:             "Software Engineer, Cybersecurity Analyst, Data Scientist",
+			Deskripsi:             "Jurusan yang mempelajari teknologi komputer dan informasi.",
+			TagJurusan:            "Komputer, teknologi, pemrograman",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Pemrograman Komputer, Struktur Data, Jaringan Komputer, Basis Data",
+			IDKampus:              "5,6,7,8,9,11",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1586,6 +1686,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.79,
 			Gaji:                  "75 - 90 Juta",
 			Pekerjaan:             "PR Specialist, Journalist, Advertising Executive, Communication Specialist, Event Organizer",
+			Deskripsi:             "Jurusan yang mempelajari komunikasi massa dan interpersonal.",
+			TagJurusan:            "Komunikasi, jurnalistik, media",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Teori Komunikasi, Media Massa, Jurnalisme, Public Relations",
+			IDKampus:              "1,3,4,5,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1599,6 +1704,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.83,
 			Gaji:                  "100 - 150 Juta",
 			Pekerjaan:             "Political Analyst, Policy Researcher, Lobbyist, Political Campaign Manager, Legislative Aide",
+			Deskripsi:             "Jurusan yang mempelajari pemerintahan dan kebijakan publik.",
+			TagJurusan:            "Politik, pemerintahan, kebijakan",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Teori Politik, Sistem Politik, Kebijakan Publik, Pemilu dan Demokrasi",
+			IDKampus:              "1,2,3,5,6,7,8,11",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1612,6 +1722,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.6,
 			Gaji:                  "80 - 100 Juta",
 			Pekerjaan:             "Historian, Archivist, Museum Curator, Researcher, Writer",
+			Deskripsi:             "Jurusan yang mempelajari sejarah dan peradaban manusia.",
+			TagJurusan:            "Sejarah, budaya, arkeologi",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Sejarah Indonesia, Sejarah Dunia, Sejarah Kebudayaan, Metodologi Penelitian Sejarah",
+			IDKampus:              "2,3,5,6,7,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1625,6 +1740,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.9,
 			Gaji:                  "120 - 200 Juta",
 			Pekerjaan:             "Epidemiologist, Health Educator, Public Health Analyst, Health Administrator, Biostatistician",
+			Deskripsi:             "Jurusan yang mempelajari kesehatan populasi.",
+			TagJurusan:            "Kesehatan, masyarakat, epidemiologi",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Epidemiologi, Kesehatan Lingkungan, Kesehatan Reproduksi, Kesehatan Ibu dan Anak",
+			IDKampus:              "1,3,4,6,7,8,9,11",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1638,6 +1758,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.8,
 			Gaji:                  "150 - 300 Juta",
 			Pekerjaan:             "Entrepreneur, Business Consultant, Marketing Manager, Project Manager, Sales Executive",
+			Deskripsi:             "Jurusan yang mempelajari bisnis dan manajemen usaha.",
+			TagJurusan:            "Kewirausahaan, bisnis, manajemen",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Manajemen Bisnis, Pemasaran, Rencana Bisnis, Inovasi dan Kreativitas",
+			IDKampus:              "1,2,4,5,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1651,6 +1776,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.7,
 			Gaji:                  "75 - 90 Juta",
 			Pekerjaan:             "Chemical Technician, Quality Control Analyst, Research Scientist",
+			Deskripsi:             "Jurusan yang mempelajari manajemen dan operasi bisnis.",
+			TagJurusan:            "Bisnis, manajemen, keuangan",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Kimia Organik, Kimia Anorganik, Kimia Fisik, Analisis Kimia",
+			IDKampus:              "1,2,3,5,6,7,8",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1664,6 +1794,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.78,
 			Gaji:                  "85 - 110 Juta",
 			Pekerjaan:             "Chemist, Research Scientist, Quality Control Analyst",
+			Deskripsi:             "Jurusan yang mempelajari matematika dan aplikasinya.",
+			TagJurusan:            "Matematika, logika, statistik",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Kimia Umum, Kimia Analitik, Kimia Fisik, Kimia Anorganik",
+			IDKampus:              "2,3,5,6,7,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1677,6 +1812,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.88,
 			Gaji:                  "150 - 250 Juta",
 			Pekerjaan:             "Business Analyst, Project Manager, Marketing Manager",
+			Deskripsi:             "Jurusan yang mempelajari perilaku dan proses mental manusia.",
+			TagJurusan:            "Psikologi, perilaku, kognitif",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Akuntansi, Pemasaran, Keuangan, Manajemen Sumber Daya Manusia",
+			IDKampus:              "1,2,4,6,7,9,11,12",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1690,6 +1830,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.74,
 			Gaji:                  "85 - 110 Juta",
 			Pekerjaan:             "Actuary, Data Analyst, Research Scientist",
+			Deskripsi:             "Jurusan yang mempelajari masyarakat dan interaksinya.",
+			TagJurusan:            "Sosiologi, budaya, politik",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Kalkulus, Aljabar Linear, Teori Bilangan, Metode Analisis",
+			IDKampus:              "2,3,5,6,7,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1703,6 +1848,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.63,
 			Gaji:                  "80 - 95 Juta",
 			Pekerjaan:             "Tourism Manager, Event Planner, Travel Consultant",
+			Deskripsi:             "Mempelajari tentang industri pariwisata dan cara mengelola destinasi wisata",
+			TagJurusan:            "Industri, Manajemen Pariwisata",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Pemasaran Pariwisata, Manajemen Destinasi, Perhotelan, Budaya dan Pariwisata",
+			IDKampus:              "1,3,4,6,7,9,12",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1716,6 +1866,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.9,
 			Gaji:                  "200 - 300 Juta",
 			Pekerjaan:             "Dokter gigi umum, dokter gigi anak, dokter gigi spesialis, dosen kedokteran gigi, peneliti kedokteran gigi",
+			Deskripsi:             "Pendidikan untuk menjadi dokter gigi dan mempelajari kesehatan gigi dan mulut",
+			TagJurusan:            "Kesehatan Gigi, Kedokteran",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Anatomi dan Fisiologi, Patologi Mulut, Kedokteran Gigi Umum, Ortodonti",
+			IDKampus:              "1,3,4,5,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1729,6 +1884,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.92,
 			Gaji:                  "300 - 400 Juta",
 			Pekerjaan:             "Dokter umum, dokter spesialis, dokter gigi umum, dosen kedokteran, peneliti kedokteran",
+			Deskripsi:             "Pendidikan untuk menjadi dokter dan mempelajari kesehatan manusia",
+			TagJurusan:            "Kesehatan, Pendidikan Kedokteran",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Anatomi dan Fisiologi, Patologi, Farmakologi, Kedokteran Umum",
+			IDKampus:              "1,2,4,6,7,8,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1742,6 +1902,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.85,
 			Gaji:                  "80 - 120 Juta",
 			Pekerjaan:             "Programmer, web developer, system analyst, data analyst, database administrator",
+			Deskripsi:             "Mempelajari teknologi informasi dan cara mengembangkan sistem informasi yang efektif",
+			TagJurusan:            "Teknologi, pendidikan IT",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Pemrograman Komputer, Sistem Informasi, Teknologi Web, Basis Data",
+			IDKampus:              "2,4,5,7,8,9",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1755,6 +1920,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.86,
 			Gaji:                  "80 - 150 Juta",
 			Pekerjaan:             "Psikolog klinis, psikolog organisasi, konsultan psikologi, peneliti psikologi, pengajar psikologi",
+			Deskripsi:             "Mempelajari perilaku manusia dan cara-cara untuk memahaminya",
+			TagJurusan:            "Perilaku Manusia, Kognisi, Emosi",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Psikologi Abnormal, Psikologi Kognitif, Psikologi Sosial, Psikologi Perkembangan",
+			IDKampus:              "1,3,5,6,8,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1768,6 +1938,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.71,
 			Gaji:                  "75 - 100 Juta",
 			Pekerjaan:             "Penulis, penerjemah, pengajar bahasa Arab, konsultan bahasa, peneliti sastra Arab",
+			Deskripsi:             "Mempelajari sastra dan bahasa Arab",
+			TagJurusan:            "Bahasa Arab, Kesusastraan",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Bahasa Arab, Sastra Arab, Budaya dan Masyarakat Arab, Sejarah Sastra Arab",
+			IDKampus:              "5,6,7,8,9,11",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1781,6 +1956,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.69,
 			Gaji:                  "75 - 100 Juta",
 			Pekerjaan:             "Penulis, penerjemah, pengajar bahasa Mandarin, konsultan bahasa, peneliti sastra Cina",
+			Deskripsi:             "Mempelajari sastra dan bahasa Cina",
+			TagJurusan:            "Bahasa Cina, Kesusastraan",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Bahasa Mandarin, Sastra Cina, Budaya dan Masyarakat Cina, Sejarah Sastra Cina",
+			IDKampus:              "1,3,4,5,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1794,6 +1974,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.75,
 			Gaji:                  "75 - 100 Juta",
 			Pekerjaan:             "Penulis, Penerjemah, Editor",
+			Deskripsi:             "Mempelajari sastra dan bahasa Indonesia",
+			TagJurusan:            "Bahasa Indonesia, Kesusastraan",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Bahasa Indonesia, Sastra Indonesia, Budaya dan Masyarakat Indonesia, Sejarah Sastra Indonesia",
+			IDKampus:              "1,2,3,5,6,7,8,11",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1807,6 +1992,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.76,
 			Gaji:                  "75 - 120 Juta",
 			Pekerjaan:             "Penulis, Editor, Translator",
+			Deskripsi:             "Mempelajari sastra dan bahasa Inggris",
+			TagJurusan:            "Bahasa Inggris, Kesusastraan",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Bahasa Inggris, Sastra Inggris, Budaya dan Masyarakat Inggris, Sejarah Sastra Inggris",
+			IDKampus:              "2,3,5,6,7,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1820,6 +2010,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.75,
 			Gaji:                  "75 - 120 Juta",
 			Pekerjaan:             "Penulis, Editor, Penerjemah",
+			Deskripsi:             "Mempelajari sastra dan bahasa Jepang",
+			TagJurusan:            "Bahasa Jepang, Kesusastraan",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Bahasa Jepang, Sastra Jepang, Budaya dan Masyarakat Jepang, Sejarah Sastra Jepang",
+			IDKampus:              "1,3,4,6,7,8,9",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1833,6 +2028,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.88,
 			Gaji:                  "80 - 150 Juta",
 			Pekerjaan:             "System Analyst, Business Analyst, Proudct Manager, UI Designer",
+			Deskripsi:             "Mempelajari sistem informasi dan cara mengelola informasi secara efektif",
+			TagJurusan:            "IT, Manajemen, Bisnis",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Pemrograman Dasar, Manajemen Bisnis Fungsional, Pengantar Keilmuan Komputer, Pemrograman Lanjut, Dasar Basis Data, Tata Kelola Teknologi Informasi, Analisis dan Desain Sistem Informasi, Manajemen Proyek Sistem Informasi",
+			IDKampus:              "1,3,4,5,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1846,6 +2046,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.83,
 			Gaji:                  "70 - 110 Juta",
 			Pekerjaan:             "Social Worker, Community Organizer, Researcher",
+			Deskripsi:             "Mempelajari hubungan sosial dan struktur masyarakat",
+			TagJurusan:            "Hubungan, Struktur Masyarakat",
+			Jurusan:               "Soshum",
+			MataKuliah:            "Sosiologi Umum, Sosiologi Keluarga, Sosiologi Industri, Sosiologi Politik",
+			IDKampus:              "1,2,3,5,6,7,8",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1859,6 +2064,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.8,
 			Gaji:                  "90 - 130 Juta",
 			Pekerjaan:             "Data Analyst, Statistician, Actuary",
+			Deskripsi:             "Ilmu yang mempelajari pengumpulan, analisis, interpretasi, dan penyajian data. Berhubungan dengan penarikan kesimpulan dari data sampel untuk populasi yang lebih besar.",
+			TagJurusan:            "Analisis data, statistik, matematika",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Statistika Deskriptif, Statistika Inferensial, Analisis Regresi, Statistika Multivariat",
+			IDKampus:              "2,3,5,6,7,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1872,6 +2082,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.73,
 			Gaji:                  "110 - 180 Juta",
 			Pekerjaan:             "Electrical Engineer, Control System Engineer, Telecommunications Engineer",
+			Deskripsi:             "Ilmu yang mempelajari tentang penerapan listrik dan magnetisme untuk membangun sistem dan komponen listrik.",
+			TagJurusan:            "Listrik, magnetisme, teknologi",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Elektronika, Komunikasi, Pengolahan Sinyal, Kendali dan Otomasi",
+			IDKampus:              "1,3,4,6,8,9,10,11",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1885,6 +2100,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.68,
 			Gaji:                  "90 - 150 Juta",
 			Pekerjaan:             "Industrial Engineer, Quality Control Engineer, Production Manager",
+			Deskripsi:             "Ilmu yang mempelajari tentang perancangan, pengembangan, dan perbaikan sistem yang terintegrasi untuk mengoptimalkan produktivitas dan efisiensi.",
+			TagJurusan:            "Produksi, efisiensi, sistem",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Manajemen Operasi, Desain Sistem, Kualitas, Ergonomi dan Keselamatan Kerja",
+			IDKampus:              "1,2,4,5,6,7,8,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1898,6 +2118,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.83,
 			Gaji:                  "110 - 190 Juta",
 			Pekerjaan:             "Software Engineer, Web Developer, Database Administrator",
+			Deskripsi:             "Ilmu yang mempelajari tentang pengembangan teknologi informasi, termasuk perangkat lunak, basis data, jaringan, dan sistem komputer.",
+			TagJurusan:            "Teknologi informasi, perangkat lunak",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Arsitektur dan Organisasi Komputer, Pemrograman Dasar, Pengantar Keilmuan Komputer, Matematika Komputasi, Desain dan Analisis Algoritma, Rekayasa Perangkat Lunak, Metode Numerik, Kecerdasan Buatan",
+			IDKampus:              "1,2,4,5,6,8,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1911,6 +2136,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.84,
 			Gaji:                  "100 - 150 Juta",
 			Pekerjaan:             "Process Engineer, Product Engineer, Researcher",
+			Deskripsi:             "Ilmu yang mempelajari tentang penerapan prinsip-prinsip kimia untuk mengembangkan proses dan perangkat yang digunakan dalam produksi dan pemrosesan bahan kimia.",
+			TagJurusan:            "Kimia, produksi, pemrosesan",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Termodinamika, Proses Kimia, Rekayasa Kimia, Teknik Pemisahan",
+			IDKampus:              "2,4,5,7,8,9",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1924,6 +2154,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.83,
 			Gaji:                  "120 - 200 Juta",
 			Pekerjaan:             "Computer Hardware Engineer, Network and Systems Administrator, Information Security Analyst",
+			Deskripsi:             "Ilmu yang mempelajari tentang desain, pengembangan, dan penggunaan komputer dan sistem komputer.",
+			TagJurusan:            "Desain komputer, sistem komputer",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Pemrograman Komputer, Jaringan Komputer, Sistem Operasi, Rekayasa Perangkat Lunak",
+			IDKampus:              "1,3,5,6,8,9,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1937,6 +2172,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.73,
 			Gaji:                  "90 - 150 Juta",
 			Pekerjaan:             "Mechanical Engineer, Automotive Engineer, Manufacturing Engineer",
+			Deskripsi:             "Ilmu yang mempelajari tentang perancangan, pembuatan, dan pemeliharaan mesin, termasuk mobil, pesawat terbang, dan peralatan industri.",
+			TagJurusan:            "Perancangan mesin, industri",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Mekanika Teknik, Material Teknik, Sistem Energi, Desain Mesin",
+			IDKampus:              "5,6,7,8,9,11",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1950,6 +2190,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.68,
 			Gaji:                  "90 - 160 Juta",
 			Pekerjaan:             "Civil Engineer, Construction Manager, Urban and Regional Planner",
+			Deskripsi:             "Ilmu yang mempelajari tentang perencanaan, desain, konstruksi, dan pemeliharaan struktur dan fasilitas fisik seperti jembatan, bangunan, dan jalan.",
+			TagJurusan:            "Konstruksi, perencanaan, desain",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Struktur Bangunan, Teknik Pengairan, Teknik Transportasi, Teknik Geoteknik",
+			IDKampus:              "2,3,4,5,6,7,10",
 		},
 		{
 			ID:                    uuid.Must(uuid.NewV4()),
@@ -1963,6 +2208,11 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 			TingkatProspekKerja:   0.83,
 			Gaji:                  "100 - 180 Juta",
 			Pekerjaan:             "Software Developer, System Analyst, IT Project Manager",
+			Deskripsi:             "Ilmu yang mempelajari tentang pengembangan dan penerapan teknologi informasi untuk memecahkan masalah bisnis dan organisasi.",
+			TagJurusan:            "Pengembangan TI, solusi bisnis",
+			Jurusan:               "Saintek",
+			MataKuliah:            "Pemrograman Dasar, Arsitektur dan Organisasi Komputer, Matematika Komputasi, Pengantar Sistem Operasi, Sistem Basis Data, Tata Kelola Teknologi Informasi, Jaringan Komputer Dasar, Keamanan Jaringan",
+			IDKampus:              "1,3,5,6,10,11,12",
 		},
 	}
 	var jurusanInt int64
@@ -1971,6 +2221,126 @@ func (uq *Quiz) GenerateJurusan(db *gorm.DB) error {
 	}
 	if jurusanInt == 0 {
 		for _, v := range jurusans {
+			err := db.Transaction(func(tx *gorm.DB) error {
+				return tx.Create(&v).Error
+			})
+			if err != nil {
+				return err
+			}
+		}
+	}
+	return nil
+}
+
+func (uq *Quiz) GenerateRiasec(db *gorm.DB) error {
+	riasecs := []models.AnalisisRiasec{
+		{
+			Tag:         "RIA",
+			Title:       "The Architect",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam ilmu pengetahuan, matematika, teknologi, dan penelitian. Mereka cenderung memiliki kecerdasan yang tinggi, analitis, logis, dan kreatif dalam mengatasi masalah. Mereka juga cenderung mandiri, kritis, dan berorientasi pada tujuan.",
+		},
+		{
+			Tag:         "RIS",
+			Title:       "The Visionary",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang kemanusiaan, politik, dan ilmu pengetahuan. Mereka cenderung memiliki kemampuan berpikir sistematis, kreatif, dan mampu menghasilkan ide-ide baru. Mereka juga cenderung terbuka terhadap sudut pandang yang berbeda, reflektif, dan berorientasi pada masa depan.",
+		},
+		{
+			Tag:         "RIE",
+			Title:       "The Mastermind",
+			Description: "Seseorang dengan kombinasi kode ini cenderung memiliki kemampuan analitis, strategis, dan kreatif. Mereka cenderung memiliki minat dalam mencari solusi unik dan mengoptimalkan strategi untuk mencapai tujuan. Mereka juga cenderung introvert, mandiri, dan mampu mengorganisir tugas secara efektif.",
+		},
+		{
+			Tag:         "RIC",
+			Title:       "The Logistician",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang teknik, ilmu komputer, dan matematika. Mereka cenderung memiliki kemampuan analitis dan detail, teliti, dan sistematis dalam bekerja. Mereka juga cenderung berpikir kritis, realistis, dan memiliki kestabilan emosi.",
+		},
+		{
+			Tag:         "RSA",
+			Title:       "The Trailblazer",
+			Description: "Seseorang dengan kombinasi kode ini cenderung memiliki kemampuan berpikir kreatif, mandiri, dan berani mengambil risiko. Mereka cenderung memiliki minat dalam mencari pengalaman baru dan menjelajahi hal-hal yang belum pernah mereka lakukan sebelumnya. Mereka juga cenderung memimpin, berorientasi pada tindakan, dan mampu memotivasi orang lain.",
+		},
+		{
+			Tag:         "RSE",
+			Title:       "The Commander",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang bisnis, manajemen, pemasaran, dan keuangan. Mereka cenderung memiliki kepercayaan diri yang tinggi, tegas, bersemangat, dan efisien dalam bekerja. Mereka juga cenderung berorientasi pada tugas, berani mengambil risiko, dan memotivasi orang lain.",
+		},
+		{
+			Tag:         "RSC",
+			Title:       "The Coordinator",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang politik, kemanusiaan, dan lingkungan. Mereka cenderung memiliki kemampuan berpikir sistematis, analitis, dan mampu mengkoordinasikan tindakan orang lain. Mereka juga cenderung mandiri, berorientasi pada tindakan, dan mampu memimpin orang lain.",
+		},
+		{
+			Tag:         "RAE",
+			Title:       "The Strategist",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang politik, seni, dan kemanusiaan. Mereka cenderung memiliki kemampuan berpikir sistematis, kreatif, dan mampu mengembangkan strategi yang efektif. Mereka juga cenderung mandiri, berorientasi pada tujuan, dan mampu memimpin orang lain.",
+		},
+		{
+			Tag:         "RAC",
+			Title:       "The Realist",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang teknik, konstruksi, dan mekanik. Mereka cenderung memiliki kemampuan praktis dan teknis yang baik, serta mampu bekerja dengan alat dan bahan. Mereka juga cenderung mandiri, berorientasi pada tindakan, dan mampu menyelesaikan masalah secara praktis.",
+		},
+		{
+			Tag:         "IAS",
+			Title:       "The Tactician",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang ilmu pengetahuan, seni, dan kemanusiaan. Mereka cenderung memiliki kemampuan berpikir analitis, kreatif, dan mampu mengeksplorasi ide-ide baru. Mereka juga cenderung fleksibel, terbuka terhadap sudut pandang yang berbeda, dan berorientasi pada pemahaman.",
+		},
+		{
+			Tag:         "IAE",
+			Title:       "The Dreamer",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang seni, kemanusiaan, dan teknologi. Mereka cenderung memiliki imajinasi yang kuat, mampu berpikir abstrak, dan terbuka terhadap ide-ide baru. Mereka juga cenderung fleksibel, intuitif, dan berorientasi pada masa depan.",
+		},
+		{
+			Tag:         "IAC",
+			Title:       "The Analyst",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang data, statistik, dan riset. Mereka cenderung memiliki kemampuan dalam menganalisis data dan membuat keputusan berdasarkan fakta dan bukti. Mereka juga cenderung analitis, mandiri, dan fokus pada tindakan.",
+		},
+		{
+			Tag:         "ISC",
+			Title:       "The Entertainer",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang seni pertunjukan, musik, dan hiburan. Mereka cenderung memiliki kepribadian yang menghibur, ekspresif, dan suka menjadi pusat perhatian. Mereka juga cenderung kreatif, impulsif, dan memiliki kemampuan untuk mengimprovisasi.",
+		},
+		{
+			Tag:         "ISE",
+			Title:       "The Mediator",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang seni, kemanusiaan, dan psikologi. Mereka cenderung memiliki kreativitas yang tinggi, berbakat dalam seni, dan sensitif terhadap perasaan orang lain. Mereka juga cenderung berpikir reflektif, intuitif, dan mengutamakan harmoni dalam hubungan antar pribadi.",
+		},
+		{
+			Tag:         "ASE",
+			Title:       "The Entrepreneur",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang kewirausahaan, bisnis, dan pemasaran. Mereka cenderung memiliki jiwa petualang, berani mengambil risiko, dan berorientasi pada inovasi dan kreativitas. Mereka juga cenderung proaktif, efektif dalam memecahkan masalah, dan bersemangat dalam mengejar tujuan.",
+		},
+		{
+			Tag:         "ACE",
+			Title:       "The Innovator",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang teknologi, sains, dan kreativitas. Mereka cenderung memiliki kemampuan dalam memecahkan masalah dan berinovasi. Mereka juga cenderung mandiri, cenderung suka mencoba hal-hal baru, dan mampu mengubah ide-ide menjadi tindakan.",
+		},
+		{
+			Tag:         "CER",
+			Title:       "The Tactician",
+			Description: "Seseorang dengan kombinasi kode ini cenderung memiliki kemampuan analitis, kreatif, dan berorientasi pada tindakan. Mereka cenderung memiliki minat dalam mencari solusi praktis dan efektif dalam situasi yang kompleks. Mereka juga cenderung berpikir sistematis dan mampu mengorganisir tugas secara terstruktur.",
+		},
+		{
+			Tag:         "CEI",
+			Title:       "The Innovator",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang teknologi, sains, atau matematika. Mereka cenderung memiliki kemampuan berpikir kreatif dan inovatif dalam memecahkan masalah serta memiliki kemampuan analitis yang baik. Mereka juga cenderung mandiri, teliti, dan berorientasi pada fakta dan logika.",
+		},
+		{
+			Tag:         "ACS",
+			Title:       "The Strategist",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang bisnis dan manajemen. Mereka cenderung memiliki kemampuan berpikir strategis dan mampu merencanakan langkah-langkah untuk mencapai tujuan. Mereka juga cenderung dapat mengambil keputusan yang tepat dan efisien serta memiliki kemampuan memimpin dan mengkoordinasikan tindakan orang lain.",
+		},
+		{
+			Tag:         "CES",
+			Title:       "The Planner",
+			Description: "Seseorang dengan kode ini cenderung memiliki minat dalam bidang pelayanan sosial, kesehatan, atau pendidikan. Mereka cenderung memiliki kemampuan perencanaan dan organisasi yang baik serta mampu berkoordinasi dengan orang lain. Mereka juga cenderung bertanggung jawab, teliti, dan dapat bekerja secara sistematis.",
+		},
+	}
+	var riasecInt int64
+	if err := db.Model(&models.AnalisisRiasec{}).Count(&riasecInt).Error; err != nil {
+		return err
+	}
+	if riasecInt == 0 {
+		for _, v := range riasecs {
 			err := db.Transaction(func(tx *gorm.DB) error {
 				return tx.Create(&v).Error
 			})

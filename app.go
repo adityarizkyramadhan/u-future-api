@@ -41,6 +41,7 @@ func main() {
 		&models.QuizResult{},
 		&models.QuizResultRiwayat{},
 		&models.Jurusan{},
+		&models.AnalisisRiasec{},
 	)
 	if err != nil {
 		log.Fatal(err.Error())
@@ -98,6 +99,11 @@ func main() {
 	}
 
 	err = useCaseQuiz.GenerateJurusan(db)
+	if err != nil {
+		log.Fatalln(err.Error())
+	}
+
+	err = useCaseQuiz.GenerateRiasec(db)
 	if err != nil {
 		log.Fatalln(err.Error())
 	}

@@ -72,3 +72,9 @@ type QuizResultAnalisis struct {
 	Enterprising  float64 `json:"enterprising"`
 	Conventional  float64 `json:"conventional"`
 }
+
+type AnalisisRiasec struct {
+	Tag         string `json:"tag"`
+	Title       string `json:"title"`
+	Description string `json:"description"`
+}

@@ -19,6 +19,11 @@ type Jurusan struct {
 	TingkatProspekKerja   float64        `json:"tingkat_prospek_kerja"`
 	Gaji                  string         `json:"gaji"`
 	Pekerjaan             string         `json:"pekerjaan"`
+	Deskripsi             string         `json:"deskripsi"`
+	TagJurusan            string         `json:"tag_jurusan"`
+	Jurusan               string         `json:"jurusan"`
+	MataKuliah            string         `json:"mata_kuliah"`
+	IDKampus              string         `json:"id_kampus"`
 	CreatedAt             time.Time      `gorm:"autoCreateTime" json:"createdAt"`
 	UpdatedAt             time.Time      `gorm:"autoUpdateTime" json:"updatedAt"`
 	DeletedAt             gorm.DeletedAt `gorm:"index" json:"deletedAt"`
