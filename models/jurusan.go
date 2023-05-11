@@ -37,3 +37,17 @@ type JurusanStudentCompare struct {
 	TagJurusan  string    `json:"tag_jurusan"`
 	Jurusan     string    `json:"jurusan"`
 }
+
+type ComparationData struct {
+	Percentage            float64 `json:"percentage"`
+	TingkatKeketatan      float64 `json:"tingkat_keketatan"`
+	TingkatKeselarasan    float64 `json:"tingkat_keselarasan"`
+	TingkatDapatPekerjaan float64 `json:"tingkat_dapat_pekerjaan"`
+	TingkatProspekKerja   float64 `json:"tingkat_prospek_kerja"`
+	Gaji                  string  `json:"gaji"`
+	Pekerjaan             string  `json:"pekerjaan"`
+	Deskripsi             string  `json:"deskripsi"`
+	TagJurusan            string  `json:"tag_jurusan"`
+	Jurusan               string  `json:"jurusan"`
+	MataKuliah            string  `json:"mata_kuliah"`
+}

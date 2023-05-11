@@ -14,6 +14,10 @@ func New(db *gorm.DB) *Jurusan {
 	return &Jurusan{db}
 }
 
+func (rs *Jurusan) GetDB() *gorm.DB {
+	return rs.db
+}
+
 func (rs *Jurusan) Create(arg *models.JurusanStudentCompare) error {
 	return rs.db.Transaction(func(tx *gorm.DB) error {
 		return tx.Create(arg).Error
@@ -44,6 +48,14 @@ func (rs *Jurusan) QueryByIDUser(idUser string) ([]*models.JurusanStudentCompare
 	return results, nil
 }
 
+func (rs *Jurusan) QueryByNameAndIdUSer(name, idUser string) (*models.JurusanStudentCompare, error) {
+	var result *models.JurusanStudentCompare
+	if err := rs.db.Where("nama_jurusan = ?", name).Where("user_id = ?", idUser).Find(&result).Error; err != nil {
+		return nil, err
+	}
+	return result, nil
+}
+
 func (rs *Jurusan) FindAll() ([]*models.JurusanStudentCompare, error) {
 	var results []*models.JurusanStudentCompare
 	if err := rs.db.Find(&results).Error; err != nil {
@@ -58,4 +70,12 @@ func (rs *Jurusan) FindAllJurusan() ([]*models.Jurusan, error) {
 		return nil, err
 	}
 	return results, nil
+}
+
+func (rs *Jurusan) GetByNameJurusan(name string) (*models.Jurusan, error) {
+	var result *models.Jurusan
+	if err := rs.db.Where("nama_jurusan = ?", name).Find(&result).Error; err != nil {
+		return nil, err
+	}
+	return result, nil
 }

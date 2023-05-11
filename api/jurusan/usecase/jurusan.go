@@ -7,6 +7,7 @@ import (
 	"u-future-api/util/logic"
 
 	"github.com/gofrs/uuid"
+	"github.com/jinzhu/copier"
 )
 
 type Jurusan struct {
@@ -93,8 +94,36 @@ func (uj *Jurusan) getAnalisis(idUSer string) error {
 }
 
 func (uj *Jurusan) GetResult(idUser string) ([]*models.JurusanStudentCompare, error) {
+	var jurusanCount int64
+	if err := uj.rj.GetDB().Model(&models.JurusanStudentCompare{}).Where("user_id = ?", idUser).Count(&jurusanCount).Error; err != nil {
+		return nil, err
+	}
+	if jurusanCount != 0 {
+		return uj.rj.QueryByIDUser(idUser)
+	}
 	if err := uj.getAnalisis(idUser); err != nil {
 		return nil, err
 	}
 	return uj.rj.QueryByIDUser(idUser)
+}
+
+func (uj *Jurusan) GetComparationData(name, idUser string) (*models.ComparationData, error) {
+	var comparation models.ComparationData
+	results, err := uj.rj.QueryByNameAndIdUSer(name, idUser)
+	if err != nil {
+		return nil, err
+	}
+	err = copier.Copy(&comparation, results)
+	if err != nil {
+		return nil, err
+	}
+	jurusan, err := uj.rj.GetByNameJurusan(results.NamaJurusan)
+	if err != nil {
+		return nil, err
+	}
+	err = copier.Copy(&comparation, jurusan)
+	if err != nil {
+		return nil, err
+	}
+	return &comparation, nil
 }
