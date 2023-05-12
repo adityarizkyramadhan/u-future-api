@@ -53,7 +53,7 @@ func (qc *Quiz) IsUserAttemptQuiz(ctx *gin.Context) {
 	id := ctx.MustGet("id").(string)
 	result, err := qc.qu.SearchTestUser(id)
 	if err != nil {
-		response.Fail(ctx, http.StatusInternalServerError, err.Error())
+		response.Fail(ctx, http.StatusBadRequest, err.Error())
 		return
 	}
 	response.Success(ctx, http.StatusOK, gin.H{

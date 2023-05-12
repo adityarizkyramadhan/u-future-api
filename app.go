@@ -130,11 +130,12 @@ func main() {
 	quizGroup := v1.Group("quiz")
 	ctrlQuiz.Mount(quizGroup)
 
+	botChat := bot.New()
+
 	ctrlJurusan := ctJur.New(useCaseJurusan)
 	jurusanGroup := v1.Group("jurusan")
 	ctrlJurusan.Mount(jurusanGroup)
 
-	botChat := bot.New()
 	chatBot := chat.New(botChat)
 	botGroup := v1.Group("bot")
 	chatBot.Mount(botGroup)

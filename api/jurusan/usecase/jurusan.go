@@ -20,6 +20,10 @@ func New(rj *repJur.Jurusan, uc *repQ.Quiz) *Jurusan {
 	return &Jurusan{rj, uc}
 }
 
+func (uj *Jurusan) GetQuizRepo() *repQ.Quiz {
+	return uj.uc
+}
+
 func (uj *Jurusan) getAnalisis(idUSer string) error {
 	var analisis models.QuizResultAnalisis
 	userId, err := uuid.FromString(idUSer)

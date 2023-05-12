@@ -11,6 +11,7 @@ import (
 
 type Jurusan struct {
 	uj *usecase.Jurusan
+	// b  *bot.Bot
 }
 
 func New(uj *usecase.Jurusan) *Jurusan {
@@ -41,10 +42,20 @@ func (cj *Jurusan) GetComparation(ctx *gin.Context) {
 		response.Fail(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
+	// hasil, err := cj.uj.GetQuizRepo().SearchByUserID(id)
+	// if err != nil {
+	// 	response.Fail(ctx, http.StatusInternalServerError, err.Error())
+	// 	return
+	// }
+	// analysisOpenai, err := cj.b.Message(prompt.AnalisisPrompt(compareOne, compareTwo, hasil.ResultSectionThree, compareDataOne.Percentage, compareDataTwo.Percentage))
+	// if err != nil {
+	// 	response.Fail(ctx, http.StatusInternalServerError, err.Error())
+	// 	return
+	// }
 	response.Success(ctx, http.StatusOK, gin.H{
 		"data_one": compareDataOne,
 		"data_two": compareDataTwo,
-		"analysis": "Analisis OPENAI",
+		"analysis": "analysisOpenai",
 	})
 }
 
