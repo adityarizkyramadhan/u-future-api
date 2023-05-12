@@ -1,6 +1,7 @@
 package usecase
 
 import (
+	"sort"
 	repJur "u-future-api/api/jurusan/repository"
 	repQ "u-future-api/api/quiz/repository"
 	"u-future-api/models"
@@ -105,6 +106,17 @@ func (uj *Jurusan) GetResult(idUser string) ([]*models.JurusanStudentCompare, er
 		return nil, err
 	}
 	return uj.rj.QueryByIDUser(idUser)
+}
+
+func (uj *Jurusan) GetRekomendasi(idUser string) ([]*models.JurusanStudentCompare, error) {
+	jurusan, err := uj.GetResult(idUser)
+	if err != nil {
+		return nil, err
+	}
+	sort.Slice(jurusan, func(i, j int) bool {
+		return jurusan[i].Percentage > jurusan[j].Percentage
+	})
+	return jurusan[:3], err
 }
 
 func (uj *Jurusan) GetComparationData(name, idUser string) (*models.ComparationData, error) {

@@ -48,7 +48,18 @@ func (cj *Jurusan) GetComparation(ctx *gin.Context) {
 	})
 }
 
+func (cj *Jurusan) GetRekomendasi(ctx *gin.Context) {
+	id := ctx.MustGet("id").(string)
+	analisis, err := cj.uj.GetRekomendasi(id)
+	if err != nil {
+		response.Fail(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+	response.Success(ctx, http.StatusOK, analisis)
+}
+
 func (cj *Jurusan) Mount(jurusan *gin.RouterGroup) {
 	jurusan.GET("predict", middleware.ValidateJWToken(), cj.GetAnalisis)
 	jurusan.GET("compare", middleware.ValidateJWToken(), cj.GetComparation)
+	jurusan.GET("recomendation", middleware.ValidateJWToken(), cj.GetRekomendasi)
 }
