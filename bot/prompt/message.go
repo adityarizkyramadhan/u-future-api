@@ -11,3 +11,7 @@ func AnalisisPrompt(jurusanA, jurusanB, values string, kecocokanA, kecocokanB fl
 	Berdasarkan hasil tes yang saya lakukan, tingkat kecocokan saya pada jurusan %s = %f dan jurusan %s = %f. Saya memiliki kelebihan pada %s". Mohon jawab secara langsung pertanyaan tanpa perkenalan atau respon awalan seperti tentu.`,
 		jurusanA, jurusanB, jurusanA, kecocokanA, jurusanB, kecocokanB, values)
 }
+
+func ChatPrompt(message string) string {
+	return `Anda merupakan chat bot untuk penjurusan kuliah. Anda dilarang menjawab diluar konteks kuliah dan psikologi. Jika diluar konteks maka ucapkan maaf. Anda memiliki kebebasan menjawab dengan data-data kuliah berikut chat dari user : ` + message
+}

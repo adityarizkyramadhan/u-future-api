@@ -132,7 +132,7 @@ func main() {
 
 	botChat := bot.New()
 
-	ctrlJurusan := ctJur.New(useCaseJurusan)
+	ctrlJurusan := ctJur.New(useCaseJurusan, botChat)
 	jurusanGroup := v1.Group("jurusan")
 	ctrlJurusan.Mount(jurusanGroup)
 

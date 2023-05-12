@@ -3,6 +3,8 @@ package controller
 import (
 	"net/http"
 	"u-future-api/api/jurusan/usecase"
+	"u-future-api/bot"
+	"u-future-api/bot/prompt"
 	"u-future-api/middleware"
 	"u-future-api/util/response"
 
@@ -11,11 +13,11 @@ import (
 
 type Jurusan struct {
 	uj *usecase.Jurusan
-	// b  *bot.Bot
+	b  *bot.Bot
 }
 
-func New(uj *usecase.Jurusan) *Jurusan {
-	return &Jurusan{uj}
+func New(uj *usecase.Jurusan, b *bot.Bot) *Jurusan {
+	return &Jurusan{uj, b}
 }
 
 func (cj *Jurusan) GetAnalisis(ctx *gin.Context) {
@@ -42,20 +44,20 @@ func (cj *Jurusan) GetComparation(ctx *gin.Context) {
 		response.Fail(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
-	// hasil, err := cj.uj.GetQuizRepo().SearchByUserID(id)
-	// if err != nil {
-	// 	response.Fail(ctx, http.StatusInternalServerError, err.Error())
-	// 	return
-	// }
-	// analysisOpenai, err := cj.b.Message(prompt.AnalisisPrompt(compareOne, compareTwo, hasil.ResultSectionThree, compareDataOne.Percentage, compareDataTwo.Percentage))
-	// if err != nil {
-	// 	response.Fail(ctx, http.StatusInternalServerError, err.Error())
-	// 	return
-	// }
+	hasil, err := cj.uj.GetQuizRepo().SearchByUserID(id)
+	if err != nil {
+		response.Fail(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
+	analysisOpenai, err := cj.b.Message(prompt.AnalisisPrompt(compareOne, compareTwo, hasil.ResultSectionThree, compareDataOne.Percentage, compareDataTwo.Percentage))
+	if err != nil {
+		response.Fail(ctx, http.StatusInternalServerError, err.Error())
+		return
+	}
 	response.Success(ctx, http.StatusOK, gin.H{
 		"data_one": compareDataOne,
 		"data_two": compareDataTwo,
-		"analysis": "analysisOpenai",
+		"analysis": analysisOpenai,
 	})
 }
 
